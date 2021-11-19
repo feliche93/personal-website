@@ -1,2 +1,2 @@
 export const nftaddress=""
-export const nftmarketadress=""
+export const nftmarketaddress=""
