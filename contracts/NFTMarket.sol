@@ -95,7 +95,7 @@ contract NFTMarket is ReentrancyGuard {
         );
     }
 
-    function sellMarketItem(address nftContract, uint256 itemId)
+    function createMarketSale(address nftContract, uint256 itemId)
         public
         payable
         nonReentrant
