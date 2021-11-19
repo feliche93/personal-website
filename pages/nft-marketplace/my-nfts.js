@@ -3,7 +3,7 @@ import Layout from '../../components/layout/Lyout'
 import NestedLayout from '../../components/layout/NestedLayout'
 
 
-function Page() {
+function MyNfts() {
     return (
         <div>
             <h1>My NFTs</h1>
@@ -11,9 +11,9 @@ function Page() {
     )
 }
 
-export default Page
+export default MyNfts
 
-Page.getLayout = function getLayout(page) {
+MyNfts.getLayout = function getLayout(page) {
     return (
       <Layout>
         <NestedLayout>{page}</NestedLayout>

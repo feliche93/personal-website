@@ -3,7 +3,7 @@ import Layout from '../../components/layout/Lyout'
 import NestedLayout from '../../components/layout/NestedLayout'
 
 
-function Page() {
+function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
@@ -11,9 +11,9 @@ function Page() {
     )
 }
 
-export default Page
+export default Dashboard
 
-Page.getLayout = function getLayout(page) {
+Dashboard.getLayout = function getLayout(page) {
     return (
       <Layout>
         <NestedLayout>{page}</NestedLayout>

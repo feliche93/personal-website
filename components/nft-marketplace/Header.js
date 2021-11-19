@@ -20,8 +20,8 @@ export default function Header() {
                             </a>
                         </Link>
                         <div className="hidden ml-10 space-x-8 lg:block">
-                            {navigation.map((link) => (
-                                <Link href={link.href}>
+                            {navigation.map((link, i) => (
+                                <Link key={i} href={link.href}>
                                     <a key={link.name} className="text-base font-medium text-white hover:text-indigo-50">
                                         {link.name}
                                     </a>

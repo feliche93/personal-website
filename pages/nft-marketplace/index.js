@@ -10,7 +10,8 @@ import NestedLayout from '../../components/layout/NestedLayout'
 
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import NFTMarket from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
-export default function Page() {
+
+export default function NFTMarketplace() {
 
   const [nfts, setNfts] = useState([])
   const [loadingSate, setLoadingSate] = useState('not-loaded')
@@ -96,7 +97,7 @@ export default function Page() {
   )
 }
 
-Page.getLayout = function getLayout(page) {
+NFTMarketplace.getLayout = function getLayout(page) {
   return (
     <Layout>
       <NestedLayout>{page}</NestedLayout>
