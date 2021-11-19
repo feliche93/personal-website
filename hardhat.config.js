@@ -1,7 +1,7 @@
 require('@nomiclabs/hardhat-waffle');
 require('dotenv').config();
 
-const privateKey = process.env.PRIVATE_KEY;
+const privateKey = process.env.PRIVATE_KEY_DEV_ACCOUNT;
 
 module.exports = {
   solidity: '0.8.4',
