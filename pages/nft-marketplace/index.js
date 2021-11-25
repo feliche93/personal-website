@@ -5,7 +5,7 @@ import Web3Modal from 'web3modal';
 
 import { nftaddress, nftmarketaddress } from '../../.config'
 
-import Layout from '../../components/layout/Lyout'
+import Layout from '../../components/layout/Layout'
 import NestedLayout from '../../components/layout/NestedLayout'
 
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'

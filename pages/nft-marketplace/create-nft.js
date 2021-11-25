@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
 
 import React from 'react'
-import Layout from '../../components/layout/Lyout'
+import Layout from '../../components/layout/Layout'
 import NestedLayout from '../../components/layout/NestedLayout'
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')

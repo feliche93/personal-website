@@ -1,4 +1,4 @@
-import Layout from '../components/layout/Lyout'
+import Layout from '../components/layout/Layout'
 import NestedLayout from '../components/layout/NestedLayout'
 
 export default function Page() {

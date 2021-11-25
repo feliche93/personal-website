@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Lyout(props) {
+function Layout(props) {
     return (
         <div>
             {props.children}
@@ -8,4 +8,4 @@ function Lyout(props) {
     )
 }
 
-export default Lyout
+export default Layout
