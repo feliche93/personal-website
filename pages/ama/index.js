@@ -4,10 +4,14 @@ import { useState } from 'react';
 import Layout from '../../components/layout/Layout';
 import AMALayout from '../../components/layout/AMALayout';
 import AskQuestion from '../../components/ama-portal/AskQuestion';
-export default function Index() {
-  /*
-  * Just a state variable we use to store our user's public wallet.
-  */
+import abi from '../../artifacts/contracts/AMAPortal.sol/AMAPortal.json';
+
+export default function AmaHome() {
+  const [currentAccount, setCurrentAccount] = useState("");
+
+  const contractAddress = "0xa05323BA12bB1170A052171D2dBa91662cc8F669";
+  const contractAbi = abi.abi;
+
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
@@ -27,7 +31,7 @@ export default function Index() {
       if (accounts.length !== 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
-        setCurrentAccount(account)
+        setCurrentAccount(account);
       } else {
         console.log("No authorized account found")
       }
@@ -42,12 +46,16 @@ export default function Index() {
 
   return (
     <div>
-      <AskQuestion></AskQuestion>
+      <AskQuestion
+        contractAbi={contractAbi}
+        contractAddress={contractAddress}
+      />
+
     </div>
   )
 }
 
-Index.getLayout = function getLayout(page) {
+AmaHome.getLayout = function getLayout(page) {
   return (
     <Layout>
       <AMALayout>{page}</AMALayout>
