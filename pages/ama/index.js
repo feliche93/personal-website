@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Layout from '../../components/layout/Layout';
 import AMALayout from '../../components/layout/AMALayout';
+import AskQuestion from '../../components/ama-portal/AskQuestion';
 export default function Index() {
   /*
   * Just a state variable we use to store our user's public wallet.
@@ -41,7 +42,7 @@ export default function Index() {
 
   return (
     <div>
-      <h1>Ask me anythin</h1>
+      <AskQuestion></AskQuestion>
     </div>
   )
 }
