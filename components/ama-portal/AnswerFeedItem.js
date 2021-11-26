@@ -36,7 +36,7 @@ const question = [
   {
     id: 4,
     type: 'answer',
-    person: { address: 'Felix Vemmer', href: '#' },
+    person: { address: 'Felix', href: '#' },
     imageUrl:
       'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
     text:
