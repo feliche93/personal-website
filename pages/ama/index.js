@@ -10,7 +10,7 @@ import AnswerFeedItem from '../../components/ama-portal/AnswerFeedItem';
 export default function AmaHome() {
   const [currentAccount, setCurrentAccount] = useState("");
 
-  const contractAddress = "0xa05323BA12bB1170A052171D2dBa91662cc8F669";
+  const contractAddress = "0x57991Af302945854AADC167ed5414Ec88f38d80b";
   const contractAbi = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
@@ -51,7 +51,10 @@ export default function AmaHome() {
         contractAbi={contractAbi}
         contractAddress={contractAddress}
       />
-      <AnswerFeedItem />
+      <AnswerFeedItem
+        contractAbi={contractAbi}
+        contractAddress={contractAddress}
+      />
     </div>
   )
 }
