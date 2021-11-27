@@ -13,6 +13,7 @@
     "@notionhq/client": "^0.4.9",
     "@openzeppelin/contracts": "^4.3.3",
     "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/typography": "^0.4.1",
     "axios": "^0.24.0",
     "chai": "^4.3.4",
     "dotenv": "^10.0.0",

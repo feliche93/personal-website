@@ -14,11 +14,12 @@ export const Text = ({ text }) => {
     return (
       <span
         className={[
-          bold ? "" : "",
-          code ? "" : "",
-          italic ? "" : "",
-          strikethrough ? "" : "",
-          underline ? "" : "",
+          color !== "default" ? `prose-${color}` : "",
+          bold ? "font-bold	text-gray-900" : "",
+          code ? "bg-gray-200 p-1 text-blue-700 font-mono text-sm" : "",
+          italic ? "italic" : "",
+          strikethrough ? "line-through" : "",
+          underline ? "underline" : "",
         ].join(" ")}
         style={color !== "default" ? { color } : {}}
       >
@@ -57,18 +58,23 @@ const renderBlock = (block) => {
           <Text text={value.text} />
         </h3>
       );
-    case "bulleted_list_item":
     case "numbered_list_item":
       return (
         <li>
           <Text text={value.text} />
         </li>
+    );
+    case "bulleted_list_item":
+      return (
+          <li>
+            <Text text={value.text} />
+          </li>
       );
     case "to_do":
       return (
-        <div>
+        <div className="py-0.5">
           <label htmlFor={id}>
-            <input type="checkbox" id={id} defaultChecked={value.checked} />{" "}
+            <input className=" focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" type="checkbox" id={id} defaultChecked={value.checked} />{" "}
             <Text text={value.text} />
           </label>
         </div>
@@ -108,10 +114,10 @@ export default function Post({ page, blocks }) {
   }
   return (
     <article>
-      <h1>
+      <h1 className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
         <Text text={page.properties.Name.title} />
       </h1>
-      <section>
+      <section className="mt-6 prose prose-blue prose-lg text-gray-500 mx-auto">
         {blocks.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
@@ -123,7 +129,7 @@ export default function Post({ page, blocks }) {
 export const getStaticPaths = async () => {
   const database = await getDatabase(databaseId);
   const slugs = database.map(page => {
-    const [rich_text ] = page.properties.Slug.rich_text;
+    const [rich_text] = page.properties.Slug.rich_text;
     return {
       params: {
         slug: rich_text.plain_text,
@@ -140,7 +146,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  const {page, pageId} = await getPage(slug, databaseId);
+  const { page, pageId } = await getPage(slug, databaseId);
   const blocks = await getBlocks(pageId);
 
   // Retrieve block children for nested blocks (one level deep), for example toggle blocks
