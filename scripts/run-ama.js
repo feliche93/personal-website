@@ -2,7 +2,7 @@ const abi = require('../artifacts/contracts/AMAPortal.sol/AMAPortal.json');
 
 const main = async () => {
 
-    const contractAddress = "0xe04Ae62f6C4664C2f87f806a6610b82F41b4A521";
+    const contractAddress = "0xb91671A21b25a11eAd0d2b4cCadAe5b154941916";
     const contractAbi = abi.abi;
 
     const [signer] = await ethers.getSigners();

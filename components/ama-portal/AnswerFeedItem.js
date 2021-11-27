@@ -69,7 +69,7 @@ export default function AnswerFeed(props) {
                         <div>
                           <div className="text-sm">
                             <a href={questionItem.person.href} className="font-medium text-gray-900">
-                              {questionItem.person.address === "0xDc33191c2b27F7fAD1C8e5e8360a3bb48e2236B9" ? "Felix" : questionItem.person.address}
+                              {questionItem.person.address === "0xDc33191c2b27F7fAD1C8e5e8360a3bb48e2236B9" ? "Felix (0xDc33191c2b27F7fAD1C8e5e8360a3bb48e2236B9)" : questionItem.person.address}
                             </a>
                           </div>
                           <p className="mt-0.5 text-sm text-gray-500">Answered {questionItem.date}</p>

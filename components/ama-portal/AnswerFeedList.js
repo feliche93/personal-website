@@ -45,7 +45,7 @@ function AnswerFeedList(props) {
 
       return question;
     }))
-    setAllQuestions(allQuestions);
+    setAllQuestions(allQuestions.reverse());
     console.log(allQuestions[0]);
     setLoading(false);
   }
