@@ -17,7 +17,7 @@ const main = async () => {
     // let retunredQuestion = await amaPortalContract.idToQuestion(1);
     // console.log(`Question: ${retunredQuestion}`);
 
-    let answeredQuestion = await amaPortalContract.answerQuestion(1, "Python and Solidity");
+    let answeredQuestion = await amaPortalContract.answerQuestion(2, "Yes very much that is why I started buildspace and joined Developer Dao.");
     await answeredQuestion.wait();
 
     // retunredQuestion = await amaPortalContract.idToQuestion(1);

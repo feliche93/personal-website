@@ -5,7 +5,7 @@ import Layout from '../../components/layout/Layout';
 import AMALayout from '../../components/layout/AMALayout';
 import AskQuestion from '../../components/ama-portal/AskQuestion';
 import abi from '../../artifacts/contracts/AMAPortal.sol/AMAPortal.json';
-import AnswerFeedItem from '../../components/ama-portal/AnswerFeedItem';
+import AnswerFeedList from '../../components/ama-portal/AnswerFeedList';
 
 export default function AmaHome() {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -51,7 +51,7 @@ export default function AmaHome() {
         contractAbi={contractAbi}
         contractAddress={contractAddress}
       />
-      <AnswerFeedItem
+      <AnswerFeedList
         contractAbi={contractAbi}
         contractAddress={contractAddress}
       />
