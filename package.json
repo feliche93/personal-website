@@ -10,6 +10,7 @@
     "@heroicons/react": "^1.0.5",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@notionhq/client": "^0.4.9",
     "@openzeppelin/contracts": "^4.3.3",
     "@tailwindcss/forms": "^0.3.4",
     "axios": "^0.24.0",
