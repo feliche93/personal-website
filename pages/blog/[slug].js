@@ -1,7 +1,32 @@
 import { Fragment } from "react";
 import { getDatabase, getPage, getBlocks } from "../../lib/notion";
 import { databaseId } from "./index.js";
-import Text from '../../components/blog/Text'
+
+export const Text = ({ text }) => {
+  if (!text) {
+    return null;
+  }
+  return text.map((value) => {
+    const {
+      annotations: { bold, code, color, italic, strikethrough, underline },
+      text,
+    } = value;
+    return (
+      <span
+        className={[
+          bold ? "" : "",
+          code ? "" : "",
+          italic ? "" : "",
+          strikethrough ? "" : "",
+          underline ? "" : "",
+        ].join(" ")}
+        style={color !== "default" ? { color } : {}}
+      >
+        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+      </span>
+    );
+  });
+};
 
 const renderBlock = (block) => {
   const { type, id } = block;
@@ -97,16 +122,26 @@ export default function Post({ page, blocks }) {
 
 export const getStaticPaths = async () => {
   const database = await getDatabase(databaseId);
+  const slugs = database.map(page => {
+    const [rich_text ] = page.properties.Slug.rich_text;
+    return {
+      params: {
+        slug: rich_text.plain_text,
+        id: page.id
+      }
+    };
+  })
+
   return {
-    paths: database.map((page) => ({ params: { id: page.id } })),
+    paths: slugs,
     fallback: true,
   };
 };
 
 export const getStaticProps = async (context) => {
-  const { id } = context.params;
-  const page = await getPage(id);
-  const blocks = await getBlocks(id);
+  const { slug } = context.params;
+  const {page, pageId} = await getPage(slug, databaseId);
+  const blocks = await getBlocks(pageId);
 
   // Retrieve block children for nested blocks (one level deep), for example toggle blocks
   // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
@@ -129,6 +164,7 @@ export const getStaticProps = async (context) => {
     }
     return block;
   });
+  console.log(blocksWithChildren);
 
   return {
     props: {
