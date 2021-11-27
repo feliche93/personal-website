@@ -10,7 +10,7 @@ import AnswerFeedItem from '../../components/ama-portal/AnswerFeedItem';
 export default function AmaHome() {
   const [currentAccount, setCurrentAccount] = useState("");
 
-  const contractAddress = "0x57991Af302945854AADC167ed5414Ec88f38d80b";
+  const contractAddress = "0xe04Ae62f6C4664C2f87f806a6610b82F41b4A521";
   const contractAbi = abi.abi;
 
   const checkIfWalletIsConnected = async () => {

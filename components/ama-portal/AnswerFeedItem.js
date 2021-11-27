@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Blockies from "react-blockies";
 import moment from 'moment';
+import LoadingSpinner from '../LoadingSpinner';
 
 // const question = [
 //   {
@@ -71,7 +72,7 @@ export default function AnswerFeed(props) {
       return question;
     }))
     setAllQuestions(allQuestions);
-    console.log(allQuestions);
+    console.log(allQuestions[0]);
     setLoading(false);
   }
 
@@ -79,80 +80,88 @@ export default function AnswerFeed(props) {
     loadAllQuestions()
   }, [])
 
+  const allQuestionsReady = allQuestions && allQuestions.length > 0
   return (
+    <>
+      {allQuestionsReady ? (
+        <div className="flow-root mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+          <icon />
+          <ul role="list" className="-mb-8">
+            {allQuestions[0].map((questionItem, questionItemIdx) => (
+              <li key={questionItem.id}>
+                <div className="relative pb-8">
+                  {questionItem.answered && questionItemIdx === 0 ? (
+                    <span className="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+                  ) : null}
+                  <div className="relative flex items-start space-x-3">
+                    {questionItem.type === 'ask' ? (
+                      <>
+                        <div className="relative">
+                          <Blockies
+                            seed={questionItem.person.address}
+                            size={5}
+                            scale={8}
+                            className="rounded-xl"
+                          />
 
-    <div className="flow-root mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <icon />
-      <ul role="list" className="-mb-8">
-        {allQuestions[0].map((questionItem, questionItemIdx) => (
-          <li key={questionItem.id}>
-            <div className="relative pb-8">
-              {questionItem.answered ? (
-                <span className="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
-              ) : null}
-              <div className="relative flex items-start space-x-3">
-                {questionItem.type === 'ask' ? (
-                  <>
-                    <div className="relative">
-                      <Blockies
-                        seed={questionItem.person.address}
-                        size={5}
-                        scale={8}
-                        className="rounded-xl"
-                      />
-
-                      <span className="absolute -bottom-0.5 -right-1 bg-white rounded-xl px-0.5 py-px">
-                        <QuestionMarkCircleIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                      </span>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div>
-                        <div className="text-sm">
-                          <a href={questionItem.person.href} className="font-medium text-gray-900">
-                            {questionItem.person.address}
-                          </a>
+                          <span className="absolute -bottom-0.5 -right-1 bg-white rounded-xl px-0.5 py-px">
+                            <QuestionMarkCircleIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                          </span>
                         </div>
-                        <p className="mt-0.5 text-sm text-gray-500">Asked {questionItem.date}
-                        </p>
-                      </div>
-                      <div className="mt-2 text-sm text-gray-700">
-                        <p>{questionItem.text}</p>
-                      </div>
-                    </div>
-                  </>
-                ) : questionItem.type === 'answer' && questionItem.answered ? (
-                  <>
-                    <div className="relative">
-                      <img
-                        className="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white"
-                        src={questionItem.imageUrl}
-                        alt=""
-                      />
-
-                      <span className="absolute -bottom-0.5 -right-1 bg-white rounded-xl px-0.5 py-px">
-                        <ChatAltIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                      </span>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div>
-                        <div className="text-sm">
-                          <a href={questionItem.person.href} className="font-medium text-gray-900">
-                            {questionItem.person.address}
-                          </a>
+                        <div className="min-w-0 flex-1">
+                          <div>
+                            <div className="text-sm">
+                              <a href={questionItem.person.href} className="font-medium text-gray-900">
+                                {questionItem.person.address}
+                              </a>
+                            </div>
+                            <p className="mt-0.5 text-sm text-gray-500">Asked {questionItem.date}
+                            </p>
+                          </div>
+                          <div className="mt-2 text-sm text-gray-700">
+                            <p>{questionItem.text}</p>
+                          </div>
                         </div>
-                        <p className="mt-0.5 text-sm text-gray-500">Answered {questionItem.date}</p>
-                      </div>
-                      <div className="mt-2 text-sm text-gray-700">
-                        <p>{questionItem.text}</p>
-                      </div>
-                    </div>
-                  </>
-                ) : null}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+                      </>
+                    ) : questionItem.type === 'answer' && questionItem.answered ? (
+                      <>
+                        <div className="relative">
+                          <img
+                            className="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white"
+                            src={questionItem.imageUrl}
+                            alt=""
+                          />
+
+                          <span className="absolute -bottom-0.5 -right-1 bg-white rounded-xl px-0.5 py-px">
+                            <ChatAltIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                          </span>
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div>
+                            <div className="text-sm">
+                              <a href={questionItem.person.href} className="font-medium text-gray-900">
+                                {questionItem.person.address}
+                              </a>
+                            </div>
+                            <p className="mt-0.5 text-sm text-gray-500">Answered {questionItem.date}</p>
+                          </div>
+                          <div className="mt-2 text-sm text-gray-700">
+                            <p>{questionItem.text}</p>
+                          </div>
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) :
+        <div className="flow-root mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        (<LoadingSpinner size={20} />)
+        </div>
+      }
+    </>
   )
 }

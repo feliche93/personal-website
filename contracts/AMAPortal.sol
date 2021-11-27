@@ -16,6 +16,7 @@ contract AMAPortal {
         address askedBy;
         string question;
         uint256 timestampAsked;
+        address answeredBy;
         string answer;
         uint256 timestampAnswered;
         uint256 upvotes;
@@ -44,8 +45,9 @@ contract AMAPortal {
             address(msg.sender),
             _questionText,
             block.timestamp,
+            address(0),
             "",
-            block.timestamp,
+            0,
             0,
             false
         );
@@ -60,6 +62,7 @@ contract AMAPortal {
             "Question already answered"
         );
 
+        idToQuestion[_questionId].answeredBy = msg.sender;
         idToQuestion[_questionId].timestampAnswered = block.timestamp;
         idToQuestion[_questionId].answered = true;
         idToQuestion[_questionId].answer = _answer;
