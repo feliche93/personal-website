@@ -14,7 +14,6 @@ export const Text = ({ text }) => {
     return (
       <span
         className={[
-          color !== "default" ? `prose-${color}` : "",
           bold ? "font-bold	text-gray-900" : "",
           code ? "bg-gray-200 p-1 text-blue-700 font-mono text-sm" : "",
           italic ? "italic" : "",
@@ -113,11 +112,11 @@ export default function Post({ page, blocks }) {
     return <div />;
   }
   return (
-    <article>
+    <article className="mt-6 prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4">
       <h1 className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
         <Text text={page.properties.Name.title} />
       </h1>
-      <section className="mt-6 prose prose-blue prose-lg text-gray-500 mx-auto">
+      <section className="">
         {blocks.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
