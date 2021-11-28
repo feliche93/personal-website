@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { getDatabase, getPage, getBlocks } from "../../lib/notion";
 import { databaseId } from "./index.js";
+import Image from "next/image";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -62,12 +63,12 @@ const renderBlock = (block) => {
         <li>
           <Text text={value.text} />
         </li>
-    );
+      );
     case "bulleted_list_item":
       return (
-          <li>
-            <Text text={value.text} />
-          </li>
+        <li>
+          <Text text={value.text} />
+        </li>
       );
     case "to_do":
       return (
@@ -96,10 +97,14 @@ const renderBlock = (block) => {
         value.type === "external" ? value.external.url : value.file.url;
       const caption = value.caption ? value.caption[0].plain_text : "";
       return (
-        <figure>
-          <img src={src} alt={caption} />
-          {caption && <figcaption>{caption}</figcaption>}
-        </figure>
+        <>
+          <div className="aspect-w-4 aspect-h-3 relative">
+            <figure>
+              <Image className="object-contain " layout='fill' src={src} alt={caption} />
+            </figure>
+          </div>
+          {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
+        </>
       );
     default:
       return `❌ Unsupported block (${type === "unsupported" ? "unsupported by Notion API" : type
