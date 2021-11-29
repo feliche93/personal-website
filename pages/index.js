@@ -1,5 +1,5 @@
 import Layout from '../components/layout/Layout'
-import NestedLayout from '../components/layout/NestedLayout'
+import WebsiteLayout from '../components/layout/WebsiteLayout'
 
 export default function Page() {
   return (
@@ -10,7 +10,7 @@ export default function Page() {
 Page.getLayout = function getLayout(page) {
   return (
     <Layout>
-      <NestedLayout>{page}</NestedLayout>
+      <WebsiteLayout>{page}</WebsiteLayout>
     </Layout>
   )
 }
