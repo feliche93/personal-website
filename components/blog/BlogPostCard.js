@@ -25,7 +25,7 @@ function BlogPostCard({ post }) {
                     <div className="flex-shrink-0">
                         <a href={post.author.href}>
                             <span className="sr-only">{post.author.name}</span>
-                            <Image width={20} height={20} className="object-contain h-10 w-10 rounded-full" src={post.author.avatar_url} alt={post.author.name} />
+                            <Image width={60} height={60} className="object-contain rounded-full" src={post.author.avatar_url} alt={post.author.name} />
                         </a>
                     </div>
                     <div className="ml-3">
