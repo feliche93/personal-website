@@ -1,7 +1,10 @@
 import WebsiteNavbar from './WebsiteNavbar'
 
-export default function WebsiteLayout() {
+export default function WebsiteLayout(props) {
   return (
-    <WebsiteNavbar></WebsiteNavbar>
+    <>
+      <WebsiteNavbar></WebsiteNavbar>
+      {props.children}
+    </>
   )
 }

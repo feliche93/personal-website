@@ -25,7 +25,7 @@ function WebsiteNavbar() {
 
   return (
     <div className="relative bg-gray-50 overflow-hidden">
-      <div className="relative pt-6 pb-16 sm:pb-24">
+      <div className="relative pt-6 pb-16 sm:pb-24 bg-gray-50">
         <Popover>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <nav className="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
@@ -37,8 +37,8 @@ function WebsiteNavbar() {
                       <div className="flex items-center">
                         <Image
                           //layout="fill"
-                          width={80}
-                          height={80}
+                          width={60}
+                          height={60}
                           className="object-contain"
                           src="/logo_transparent.png"
                           alt="Cryptoneur Logo"

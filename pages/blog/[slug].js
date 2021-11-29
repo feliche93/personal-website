@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import { getDatabase, getPage, getBlocks } from "../../lib/notion";
 import { databaseId } from "./index.js";
 import Image from "next/image";
+import Layout from "../../components/layout/Layout";
+import WebsiteLayout from "../../components/layout/WebsiteLayout";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -117,7 +119,7 @@ export default function Post({ page, blocks }) {
     return <div />;
   }
   return (
-    <article className="mt-6 prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4">
+    <article className="prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50">
       <h1 className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
         <Text text={page.properties.Name.title} />
       </h1>
@@ -184,3 +186,11 @@ export const getStaticProps = async (context) => {
     revalidate: 1,
   };
 };
+
+Post.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <WebsiteLayout>{page}</WebsiteLayout>
+    </Layout>
+  )
+}
