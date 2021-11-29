@@ -1,10 +1,11 @@
 import React from 'react'
+import Image from 'next/image';
 
 function BlogPostCard({ post }) {
     return (
         <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
-                <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+                <Image width={800} height={400} className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
             </div>
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
@@ -24,7 +25,7 @@ function BlogPostCard({ post }) {
                     <div className="flex-shrink-0">
                         <a href={post.author.href}>
                             <span className="sr-only">{post.author.name}</span>
-                            <img className="h-10 w-10 rounded-full" src={post.author.avatar_url} alt={post.author.name} />
+                            <Image width={20} height={20} className="object-contain h-10 w-10 rounded-full" src={post.author.avatar_url} alt={post.author.name} />
                         </a>
                     </div>
                     <div className="ml-3">
