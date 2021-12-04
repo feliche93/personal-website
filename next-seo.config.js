@@ -1,4 +1,7 @@
 export default {
+    title: 'Cryptoneur',
+    description: 'Check out my portofolio projects, browse through my blog posts or get in touch with me for freelance work.',
+    defaultTitle: 'Cryptoneur',
     openGraph: {
         type: 'website',
         locale: 'en_US',
