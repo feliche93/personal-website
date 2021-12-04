@@ -59,7 +59,7 @@ function Skills() {
                                 <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow">
                                     <div className="-mt-6">
                                         <div>
-                                            <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                                            <span className="inline-flex items-center justify-center p-3 bg-blue-600 rounded-md shadow-lg">
                                                 <skill.icon className="h-6 w-6 text-white" aria-hidden="true" />
                                             </span>
                                         </div>
@@ -67,11 +67,11 @@ function Skills() {
                                         <p className="mt-5 text-base text-gray-500">
                                             {skill.description}
                                         </p>
-                                        <p className="mt-5 text-base font-medium text-blue-500">{skill.skillDescription}</p>
+                                        <p className="mt-5 text-base font-medium text-blue-600">{skill.skillDescription}</p>
                                         <div>
                                             <p className="mt-2 text-base text-gray-500">{skill.skillList.join(", ")}</p>
                                         </div>
-                                        <p className="mt-5 text-base font-medium text-blue-500">{skill.toolDescription}</p>
+                                        <p className="mt-5 text-base font-medium text-blue-600">{skill.toolDescription}</p>
                                         <ul>
                                             {skill.toolList.map((tool) => (
                                                 <li key={tool} className="mt-2 text-sm font-base text-gray-500">{tool}</li>

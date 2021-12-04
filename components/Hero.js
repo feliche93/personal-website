@@ -11,6 +11,7 @@ function Hero() {
           className="object-contain rounded-full"
           width={256}
           height={256}
+          alt="Felix Vemmer"
           src="/felix-vemmer-profile-pic.png"
         />
       </div>
