@@ -5,6 +5,7 @@ import moment from 'moment';
 import BlogPostGrid from "../../components/blog/BlogPostGrid";
 import Layout from "../../components/layout/Layout";
 import WebsiteLayout from "../../components/layout/WebsiteLayout";
+import { NextSeo } from "next-seo";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 export default function Page({ posts }) {
@@ -42,6 +43,10 @@ export default function Page({ posts }) {
 
   return (
     <>
+      <NextSeo
+        title="Blog"
+        description="Check out the latest blog posts about Web3, DEFI, Etherum and more."
+      />
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-10 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
           <div className=" h-1/3 sm:h-2/3" />
