@@ -92,7 +92,7 @@ export default function Example() {
                         </Link>
                     ))}
                 </div>
-                <p className="mt-8 text-center text-base text-gray-400">&copy; 2021 Cryptoneur.</p>
+                <p className="mt-8 text-center text-base text-gray-500">&copy; 2021 Cryptoneur.</p>
             </div>
         </footer>
     )
