@@ -102,7 +102,7 @@ const renderBlock = (block) => {
         <>
           <div className="aspect-w-4 aspect-h-3 relative">
             <figure>
-              <Image className="object-contain " layout='fill' src={src} alt={caption} />
+              <Image className="object-contain " width={1200} height={800} src={src} alt={caption} />
             </figure>
           </div>
           {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
