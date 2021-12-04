@@ -43,7 +43,7 @@ const skills = [
 
 function Skills() {
     return (
-        <div className="relativepy-16 sm:py-24 lg:py-32">
+        <div className="relative py-16 sm:py-24 lg:py-32">
             <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
                 <h2 className="text-base font-semibold tracking-wider text-blue-600 uppercase">Skills</h2>
                 <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
@@ -56,7 +56,7 @@ function Skills() {
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-1 lg:grid-cols-3">
                         {skills.map((skill) => (
                             <div key={skill.name} className="pt-6">
-                                <div className="flow-root bg-white rounded-lg px-6 pb-8">
+                                <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow">
                                     <div className="-mt-6">
                                         <div>
                                             <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">

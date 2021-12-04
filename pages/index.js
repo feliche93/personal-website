@@ -3,6 +3,7 @@ import WebsiteLayout from '../components/layout/WebsiteLayout'
 import Hero from '../components/Hero'
 import { NextSeo } from 'next-seo';
 import Skills from '../components/Skills';
+import CompanyCloud from '../components/CompanyCloud';
 
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
     />
     <Hero/>
     <Skills/>
+    <CompanyCloud/>
     </>
     )
 }
