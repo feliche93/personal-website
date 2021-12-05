@@ -26,6 +26,7 @@
     "moment": "^2.29.1",
     "next": "latest",
     "next-seo": "^4.28.1",
+    "next-share": "^0.12.2",
     "next-sitemap": "^1.6.203",
     "react": "^17.0.2",
     "react-blockies": "^1.4.1",

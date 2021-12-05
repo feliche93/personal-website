@@ -9,9 +9,10 @@ import Image from 'next/image'
 // TODO: Check active links working
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'Gas Fee Caculator', href: '/gas-fees-calculator' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Freelancing', href: '/freelancing' },
-  { name: 'Portfolio', href: '/portfolio' },
+  // { name: 'Freelancing', href: '/freelancing' },
+  // { name: 'Portfolio', href: '/portfolio' },
 ]
 
 function classNames(...classes) {

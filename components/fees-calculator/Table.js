@@ -10,7 +10,6 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
   console.log(usedGas)
 
   return (
-
     <div className="flex flex-col mt-8">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -114,16 +113,16 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
                         </>
                       )}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{(
+                    <td className="px-6 py-4 whitespace-nowrap font-bold text-sm text-gray-900">{(
                       network.tokenPrice.price * selectedCurrency.value * usedGas * network.gasPrices[selectedGasPrice] / 10**9
 
                       ).toFixed(4)} {selectedCurrency.name
                       }</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" className="text-blue-600 hover:text-indigo-900">
-                        View Details
+
                       </a>
-                    </td>
+                     </td>
                   </tr>
                 ))}
               </tbody>
