@@ -78,7 +78,7 @@ export default function test() {
 
     // STATE
     const [selectedCurrency, setSelectedCurrency] = useState([])
-    const [selectedGasPrice, setSelectedGasPrice] = useState([])
+    const [selectedGasPrice, setSelectedGasPrice] = useState('standard')
     const [tableNetworkPrices, setTableNetworkPrices] = useState([])
     const [usedGas, setUsedGas] = useState(21000)
     // const [gasPrice, setGasPrice] = useState(120)
@@ -203,14 +203,14 @@ export default function test() {
                     title="Gas Price"
                     description="Gas fees are paid in each network's native currency."
                 >
-                    {/* <GasPriceRadio
+                    <GasPriceRadio
                         selectedGasPrice={selectedGasPrice}
                         setSelectedGasPrice={setSelectedGasPrice}
-                        prices={gasPrices}
-                    /> */}
+                    />
                 </FeesFormCard>
             </FeesForm>
             <Table
+                selectedGasPrice={selectedGasPrice}
                 usedGas={usedGas}
                 selectedCurrency={selectedCurrency}
                 tableNetworkPrices={tableNetworkPrices}

@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadingNetworkPrices, selectedCurrency, usedGas }) {
+export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadingNetworkPrices, selectedCurrency, usedGas, selectedGasPrice }) {
 
   console.log(usedGas)
 
@@ -109,12 +109,16 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
                     <td className="px-6 py-4 whitespace-nowrap">
                       {isLoadingNetworkPrices ? <h1>Loading</h1> : (
                         <>
-                          <div className="text-sm text-gray-900">{network.tokenPrice.symbol}</div>
-                          <div className="text-sm text-gray-500">{(network.tokenPrice.price * selectedCurrency.value).toFixed(2)} {selectedCurrency.name}</div>
+                          <div className="text-sm capitalize text-gray-900">{selectedGasPrice}</div>
+                          <div className="text-sm text-gray-500">{network.gasPrices[selectedGasPrice]}</div>
                         </>
                       )}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{network.currentCost}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{(
+                      network.tokenPrice.price * selectedCurrency.value * usedGas * network.gasPrices[selectedGasPrice] / 10**9
+
+                      ).toFixed(4)} {selectedCurrency.name
+                      }</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" className="text-blue-600 hover:text-indigo-900">
                         View Details
