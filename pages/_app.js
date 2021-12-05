@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css';
+import Head from 'next/head'
 import { DefaultSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
 
@@ -9,9 +10,26 @@ export default function MyApp({ Component, pageProps }) {
 
   return getLayout(
     <>
+      <Head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-99PS7Y2S84"
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-99PS7Y2S84', { page_path: window.location.pathname });
+            `,
+          }}
+        />
+      </Head>
       <DefaultSeo
-        titleTemplate = 'Cryptoneur | %s'
-        defaultTitle = 'Cryptoneur'
+        titleTemplate='Cryptoneur | %s'
+        defaultTitle='Cryptoneur'
         description="Welcome to my personal website! Check out my portofolio projects, browse through my blog posts or get in touch with me for freelance work."
         openGraph={{
           type: 'website',
