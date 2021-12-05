@@ -13,7 +13,7 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-99PS7Y2S84"
+          src="https://www.googletagmanager.com/gtag/js?id=G-FZ9XDW8NMK"
         />
 
         <script
@@ -22,7 +22,7 @@ export default function MyApp({ Component, pageProps }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-99PS7Y2S84', { page_path: window.location.pathname });
+              gtag('config', 'G-FZ9XDW8NMK', { page_path: window.location.pathname });
             `,
           }}
         />
