@@ -4,6 +4,7 @@ import { databaseId } from "./index.js";
 import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import WebsiteLayout from "../../components/layout/WebsiteLayout";
+import moment from 'moment';
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -115,15 +116,52 @@ const renderBlock = (block) => {
 };
 
 export default function Post({ page, blocks }) {
+
+  console.log(page);
+
+  const published = page.properties.Published.checkbox;
+
+  const [title] = page.properties.Name.title
+  const [description] = page.properties.Description.rich_text
+  const [slug] = page.properties.Slug.rich_text
+  const [author] = page.properties.Author.people
+  const timestamp = moment(page.last_edited_time)
+  const [file] = page.properties.Cover.files
+
+  const post = {
+    id: page.id,
+    title: title.text.content,
+    href: `/blog/${slug.plain_text}`,
+    category: page.properties.Tags.multi_select,
+    description: description.plain_text,
+    date: timestamp.format('ll'),
+    datetime: timestamp.format('YYYY-MM-DD'),
+    imageUrl: file.file.url,
+    author: author,
+    readingTime: '4 min'
+
+  }
+
+
   if (!page || !blocks) {
     return <div />;
   }
   return (
-    <article className="prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50">
-      <h1 className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-        <Text text={page.properties.Name.title} />
+    <article className="sm:mx-auto mx-4 bg-gray-50">
+      <div className="flex justify-center items-center">
+        <Image src={post.imageUrl} width={640} height={400} className="object-contain rounded-xl" alt="TOODO" />
+      </div>
+      <h1 className="mt-2 block text-4xl py-8 text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl sm:max-w-3xl sm:mx-auto mx-4">
+        {post.title}
       </h1>
-      <section className="">
+      <div className="flex items-center justify-center group pb-6">
+        <Image width={80} height={80} className="object-contain rounded-full" src={post.author.avatar_url} alt={post.author.name} />
+        <div className="ml-3">
+          <div className="block text-xl font-medium text-gray-700">{post.author.name}</div>
+          <div className="block text-base font-medium text-gray-500">{post.date}</div>
+        </div>
+      </div>
+      <section className="prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50">
         {blocks.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
