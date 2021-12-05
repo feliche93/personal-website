@@ -4,53 +4,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const networks = [
-  {
-    name: 'Etherum',
-    website: 'https://ethereum.org/',
-    image: '/networks/etherum_logo.png',
-    type: 'Layer 1',
-    currentCost: '$ 11.49'
-  },
-  {
-    name: 'Polygon Hermez',
-    website: 'https://hermez.io/',
-    image: '/networks/hermez_logo.png',
-    type: 'Layer 2',
-    currentCost: '$ 11.49'
-  },
-  // {
-  //   name: 'ZKSync',
-  //   website: 'https://zksync.io/',
-  //   image: '/networks/zksync_logo.png',
-  //   type: 'Layer 2',
-  //   currentCost: '$ 11.49'
-  // },
-  // {
-  //   name: 'Loopring',
-  //   website: 'https://loopring.io/',
-  //   image: '/networks/loopring_logo.png',
-  //   type: 'Layer 2',
-  //   currentCost: '$ 11.49'
-  // },
-  {
-    name: 'Arbitrum One',
-    website: 'https://offchainlabs.com/',
-    image: '/networks/arbitrum_one_logo.jpeg',
-    type: 'Layer 2',
-    currentCost: '$ 11.49'
-  },
-  {
-    name: 'Optimism',
-    website: 'https://optimism.io/',
-    image: '/networks/optimism_logo.png',
-    type: 'Layer 2',
-    currentCost: '$ 11.49'
-  },
-]
-
-
-export default function Table() {
+export default function Table({networks}) {
   return (
 
     <div className="flex flex-col mt-8">
@@ -76,7 +30,7 @@ export default function Table() {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Status
+                    Type
                   </th>
                   <th
                     scope="col"
@@ -117,7 +71,9 @@ export default function Table() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={classNames(
-                        network.type == "Layer 1" ? "bg-gray-100 text-gray-800" : "bg-blue-100 text-blue-800",
+                        network.type === "Layer 1" ? "bg-gray-100 text-gray-800" :
+                        network.type === "Sidechain" ? "bg-green-100 text-green-800":
+                        "bg-blue-100 text-blue-800",
                         "px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
                       )}>
                         {network.type}

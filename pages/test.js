@@ -11,15 +11,70 @@ import UsedGasInput from '../components/fees-calculator/UsedGasInput'
 import GasPriceRadio from '../components/fees-calculator/GasPriceRadio'
 import Table from '../components/fees-calculator/Table'
 
-const listOfCurrencies = [ 'USD', 'EUR', 'GBP', 'CAD', 'AUD', 'NZD', 'CHF', 'JPY', 'SEK', 'NOK', 'DKK', 'HKD', 'SGD', 'THB']
-
-const prices = [
-    { name: 'Standard', price: '40' },
-    { name: 'Fast', price: '80' },
-    { name: 'Instant', price: '160' },
-]
+const listOfCurrencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'NZD', 'CHF', 'JPY', 'SEK', 'NOK', 'DKK', 'HKD', 'SGD', 'THB']
 
 export default function test() {
+
+    const networks = [
+        {
+            network: 'ethereum',
+            symbol: 'ETH',
+            name: 'Etherum',
+            website: 'https://ethereum.org/',
+            image: '/networks/etherum_logo.png',
+            type: 'Layer 1',
+            currentCost: '$ 11.49'
+        },
+        {
+            network: 'polygon',
+            name: 'Polygon',
+            symbol: 'MATIC',
+            website: 'https://hermez.io/',
+            image: '/networks/polygon_logo.png',
+            type: 'Sidechain',
+            currentCost: '$ 11.49'
+        },
+        {
+            network: 'avalanche',
+            name: 'Avalanche',
+            symbol: 'AVAX',
+            website: 'https://avalanche.network/',
+            image: '/networks/avalanche_logo.png',
+            type: 'Sidechain',
+            currentCost: '$ 11.49'
+        },
+        {
+            network: 'arbitrum',
+            symbol: 'ETH',
+            name: 'Arbitrum One',
+            website: 'https://offchainlabs.com/',
+            image: '/networks/arbitrum_one_logo.jpeg',
+            type: 'Layer 2',
+            currentCost: '$ 11.49'
+        },
+        // {
+        //   name: 'ZKSync',
+        //   website: 'https://zksync.io/',
+        //   image: '/networks/zksync_logo.png',
+        //   type: 'Layer 2',
+        //   currentCost: '$ 11.49'
+        // },
+        // {
+        //   name: 'Loopring',
+        //   website: 'https://loopring.io/',
+        //   image: '/networks/loopring_logo.png',
+        //   type: 'Layer 2',
+        //   currentCost: '$ 11.49'
+        // },
+
+        // {
+        //     name: 'Optimism',
+        //     website: 'https://optimism.io/',
+        //     image: '/networks/optimism_logo.png',
+        //     type: 'Layer 2',
+        //     currentCost: '$ 11.49'
+        // },
+    ]
 
     // STATE
     const [selectedCurrency, setSelectedCurrency] = useState([])
@@ -38,35 +93,15 @@ export default function test() {
         let currencies = new Array()
 
         Object.entries(data).forEach(([key, value]) => {
-            const element = {"name" : key, "value": value}
+            const element = { "name": key, "value": value }
             currencies.push(element)
-          });
+        });
 
         const filteredCurrencies = currencies.filter(currency => listOfCurrencies.includes(currency.name))
         setSelectedCurrency(filteredCurrencies[0])
 
         return filteredCurrencies
     }
-
-    const fetchGasPrices = async (url, params) => {
-        const response = await axios.get(url, { params: { ...params, api_key: API_KEY } })
-        const data = response.data
-
-        const prices = new Array()
-
-        Object.entries(data).forEach(([key, value]) => {
-            const element = {"name": key, "price": value}
-            prices.push(element)
-          });
-
-        setSelectedGasPrice(prices[0])
-
-        return prices
-    }
-
-    // Data
-    const { data: fiatRates, isLoading: isLoadingFiatRates, isError: isErrorFiatRates } = useFiatRates()
-
 
     function useFiatRates(params = {}) {
         const url = `${API_URL}/fiat-rates`
@@ -79,9 +114,42 @@ export default function test() {
         }
     }
 
-    function useGasPrices(params) {
-        const url = `${API_URL}/gas-price`
-        const { data, error } = useSWR([url, { ...params, eip1559: true }], fetchGasPrices)
+    const fetchNetworkPrices = async (apiUrl, networks) => {
+
+        try {
+
+            const requests = Promise.all(networks.map(async network => {
+                const gasPriceResponse = await axios.get(`${apiUrl}/gas-price`, { params: { ...network, api_key: API_KEY } })
+                const tokenPriceResponse = await axios.get(`${apiUrl}/prices`, { params: { ...network, api_key: API_KEY } })
+                const tokenListResponse = await axios.get(`${apiUrl}/token-list`, { params: { api_key: API_KEY } })
+
+                const gasPriceData = gasPriceResponse.data
+                const tokenPriceData = tokenPriceResponse.data
+                const tokenListResponseData = tokenListResponse.data.tokens
+
+                return { gasPriceData, tokenPriceData, tokenListResponseData }
+            }));
+
+            const data = await requests;
+
+            const cleanedData = networks.map((network, index) => {
+                return {
+                    ...network,
+                    gasPrices: data[index].gasPriceData,
+                    tokenPrices: data[index].tokenPriceData.filter(token => token.symbol === network.symbol),
+                    token: data[index].tokenListResponseData.filter(token => token.symbol === network.symbol)
+                }
+            })
+
+            return cleanedData
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function useNetworkPrices(networks) {
+        const { data, error } = useSWR([API_URL, networks], fetchNetworkPrices)
 
         return {
             data,
@@ -90,18 +158,18 @@ export default function test() {
         }
     }
 
-    const { data: gasPrices, isLoading: isLoadingGasPrices, isError: isErrorGasPrices } = useGasPrices({ 'network': 'polygon' })
+    const { data: fiatRates, isLoading: isLoadingFiatRates, isError: isErrorFiatRates } = useFiatRates()
+    const { data: networkPrices, isLoading: isLoadingnetworkPrices, isError: isErrorNetworkPrices } = useNetworkPrices(networks)
 
-
+    console.log(networkPrices);
 
     if (isLoadingFiatRates) return <LoadingSpinner />
     if (isErrorFiatRates) return <h1>Error</h1>
 
-    if (isLoadingGasPrices) return <LoadingSpinner />
-    if (isErrorGasPrices) return <h1>Error</h1>
+    if (isLoadingnetworkPrices) return <LoadingSpinner />
+    if (isErrorNetworkPrices) return <h1>Error</h1>
 
     return (
-
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <FeesForm>
                 <FeesFormCard
@@ -127,14 +195,14 @@ export default function test() {
                     title="Gas Price"
                     description="Gas fees are paid in each network's native currency."
                 >
-                    <GasPriceRadio
+                    {/* <GasPriceRadio
                         selectedGasPrice={selectedGasPrice}
                         setSelectedGasPrice={setSelectedGasPrice}
                         prices={gasPrices}
-                    />
+                    /> */}
                 </FeesFormCard>
             </FeesForm>
-            <Table/>
+            <Table networks={networkPrices} />
             <br></br>
             <br></br>
             {/* <h2>Fiat Price: {fiatRates[selectedCurrency.name]} {selectedCurrency.name}</h2>

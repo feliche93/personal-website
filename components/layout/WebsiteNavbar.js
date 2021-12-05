@@ -21,8 +21,6 @@ function classNames(...classes) {
 function WebsiteNavbar() {
 
   const router = useRouter()
-  console.log(router.pathname)
-  console.log(navigation[1].href)
 
   return (
     <div className="relative bg-gray-50 sm:overflow-hidden">
