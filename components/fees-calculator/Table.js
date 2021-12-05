@@ -1,10 +1,14 @@
 import Image from 'next/image'
+import LoadingSpinner from '../LoadingSpinner'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Table({networks}) {
+export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadingNetworkPrices, selectedCurrency, usedGas }) {
+
+  console.log(usedGas)
+
   return (
 
     <div className="flex flex-col mt-8">
@@ -24,13 +28,25 @@ export default function Table({networks}) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Type
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Type
+                    Token
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Gas Used
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Gas Price
                   </th>
                   <th
                     scope="col"
@@ -44,7 +60,7 @@ export default function Table({networks}) {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {networks.map((network) => (
+                {tableNetworkPrices.map((network) => (
                   <tr key={network.website}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
@@ -61,23 +77,42 @@ export default function Table({networks}) {
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">{network.name}</div>
-                          <div className="text-sm text-gray-500">{network.website}</div>
+                          <a href={network.website} target="_blank" className="text-sm text-gray-500">{network.website}</a>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{network.name}</div>
-                      <div className="text-sm text-gray-500">{network.name}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
                       <span className={classNames(
                         network.type === "Layer 1" ? "bg-gray-100 text-gray-800" :
-                        network.type === "Sidechain" ? "bg-green-100 text-green-800":
-                        "bg-blue-100 text-blue-800",
+                          network.type === "Sidechain" ? "bg-indigo-100 text-indigo-800" :
+                            "bg-blue-100 text-blue-800",
                         "px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
                       )}>
                         {network.type}
                       </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {isLoadingNetworkPrices ? <h1>Loading</h1> : (
+                        <>
+                          <div className="text-sm text-gray-900">{network.tokenPrice.symbol}</div>
+                          <div className="text-sm text-gray-500">{(network.tokenPrice.price * selectedCurrency.value).toFixed(2)} {selectedCurrency.name}</div>
+                        </>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {isLoadingNetworkPrices ? <h1>Loading</h1> : (
+                        <>
+                          <div className="text-sm text-gray-500">{usedGas}</div>
+                        </>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {isLoadingNetworkPrices ? <h1>Loading</h1> : (
+                        <>
+                          <div className="text-sm text-gray-900">{network.tokenPrice.symbol}</div>
+                          <div className="text-sm text-gray-500">{(network.tokenPrice.price * selectedCurrency.value).toFixed(2)} {selectedCurrency.name}</div>
+                        </>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{network.currentCost}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

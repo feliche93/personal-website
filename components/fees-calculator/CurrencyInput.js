@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
+import LoadingSpinner from '../LoadingSpinner'
 
 
 function classNames(...classes) {
@@ -11,6 +12,7 @@ export default function CurrencyInput({
   selectedCurrency,
   setSelectedCurrency,
   currencies,
+  isLoadingFiatRates
 }) {
 
   return (
@@ -36,37 +38,41 @@ export default function CurrencyInput({
                   leaveTo="opacity-0"
                 >
                   <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                    {currencies.map((currency) => (
-                      <Listbox.Option
-                        key={currency.name}
-                        className={({ active }) =>
-                          classNames(
-                            active ? 'text-white bg-blue-600' : 'text-gray-900',
-                            'cursor-default select-none relative py-2 pl-8 pr-4'
-                          )
-                        }
-                        value={currency}
-                      >
-                        {({ selectedCurrency, active }) => (
-                          <>
-                            <span className={classNames(selectedCurrency ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                              {currency.name}
-                            </span>
-
-                            {selectedCurrency ? (
-                              <span
-                                className={classNames(
-                                  active ? 'text-white' : 'text-blue-600',
-                                  'absolute inset-y-0 left-0 flex items-center pl-1.5'
-                                )}
-                              >
-                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                    {isLoadingFiatRates ?
+                      <LoadingSpinner />
+                      :
+                      (currencies.map((currency) => (
+                        <Listbox.Option
+                          key={currency.name}
+                          className={({ active }) =>
+                            classNames(
+                              active ? 'text-white bg-blue-600' : 'text-gray-900',
+                              'cursor-default select-none relative py-2 pl-8 pr-4'
+                            )
+                          }
+                          value={currency}
+                        >
+                          {({ selectedCurrency, active }) => (
+                            <>
+                              <span className={classNames(selectedCurrency ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                                {currency.name}
                               </span>
-                            ) : null}
-                          </>
-                        )}
-                      </Listbox.Option>
-                    ))}
+
+                              {selectedCurrency ? (
+                                <span
+                                  className={classNames(
+                                    active ? 'text-white' : 'text-blue-600',
+                                    'absolute inset-y-0 left-0 flex items-center pl-1.5'
+                                  )}
+                                >
+                                  <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                </span>
+                              ) : null}
+                            </>
+                          )}
+                        </Listbox.Option>
+                      ))
+                      )}
                   </Listbox.Options>
                 </Transition>
               </div>

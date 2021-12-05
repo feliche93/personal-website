@@ -38,7 +38,7 @@ export default function test() {
             network: 'avalanche',
             name: 'Avalanche',
             symbol: 'AVAX',
-            website: 'https://avalanche.network/',
+            website: 'https://www.avax.network/',
             image: '/networks/avalanche_logo.png',
             type: 'Sidechain',
             currentCost: '$ 11.49'
@@ -79,6 +79,7 @@ export default function test() {
     // STATE
     const [selectedCurrency, setSelectedCurrency] = useState([])
     const [selectedGasPrice, setSelectedGasPrice] = useState([])
+    const [tableNetworkPrices, setTableNetworkPrices] = useState([])
     const [usedGas, setUsedGas] = useState(21000)
     // const [gasPrice, setGasPrice] = useState(120)
     const ethPrice = 4121.91
@@ -131,15 +132,24 @@ export default function test() {
             }));
 
             const data = await requests;
+            console.log("TokenReponse Data")
+            console.log(data)
 
             const cleanedData = networks.map((network, index) => {
+
+                const [token] = data[index].tokenListResponseData.filter(token => token.symbol === network.symbol)
+                const gasPrices = data[index].gasPriceData
+                const [tokenPrice] = data[index].tokenPriceData.filter(token => token.symbol === network.symbol)
+
                 return {
                     ...network,
-                    gasPrices: data[index].gasPriceData,
-                    tokenPrices: data[index].tokenPriceData.filter(token => token.symbol === network.symbol),
-                    token: data[index].tokenListResponseData.filter(token => token.symbol === network.symbol)
+                    token,
+                    gasPrices,
+                    tokenPrice,
                 }
             })
+
+            setTableNetworkPrices(cleanedData);
 
             return cleanedData
 
@@ -163,11 +173,8 @@ export default function test() {
 
     console.log(networkPrices);
 
-    if (isLoadingFiatRates) return <LoadingSpinner />
-    if (isErrorFiatRates) return <h1>Error</h1>
-
-    if (isLoadingnetworkPrices) return <LoadingSpinner />
-    if (isErrorNetworkPrices) return <h1>Error</h1>
+    // if (isLoadingFiatRates && isLoadingnetworkPrices) return <LoadingSpinner />
+    // if (isErrorFiatRates && isErrorNetworkPrices) return <h1>Error</h1>
 
     return (
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -177,6 +184,7 @@ export default function test() {
                     description="Select the currency you want the fees to be displayed in"
                 >
                     <CurrencyInput
+                        isLoadingFiatRates={isLoadingFiatRates}
                         selectedCurrency={selectedCurrency}
                         setSelectedCurrency={setSelectedCurrency}
                         currencies={fiatRates}
@@ -202,7 +210,13 @@ export default function test() {
                     /> */}
                 </FeesFormCard>
             </FeesForm>
-            <Table networks={networkPrices} />
+            <Table
+                usedGas={usedGas}
+                selectedCurrency={selectedCurrency}
+                tableNetworkPrices={tableNetworkPrices}
+                isLoadingFiatRates={isLoadingFiatRates}
+                isLoadingNetworkPrices={isLoadingnetworkPrices}
+            />
             <br></br>
             <br></br>
             {/* <h2>Fiat Price: {fiatRates[selectedCurrency.name]} {selectedCurrency.name}</h2>
