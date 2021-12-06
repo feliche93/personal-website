@@ -117,48 +117,23 @@ const renderBlock = (block) => {
 
 export default function Post({ page, blocks }) {
 
-
-  const published = page.properties.Published?.checkbox;
-
-  const [title] = page.properties.Name.title
-  const [description] = page.properties.Description.rich_text
-  const [slug] = page.properties.Slug.rich_text
-  const [author] = page.properties.Author.people
-  const timestamp = moment(page.last_edited_time)
-  const [file] = page.properties.Cover.files
-
-  const post = {
-    id: page.id,
-    title: title.text.content,
-    href: `/blog/${slug.plain_text}`,
-    category: page.properties.Tags.multi_select,
-    description: description.plain_text,
-    date: timestamp.format('ll'),
-    datetime: timestamp.format('YYYY-MM-DD'),
-    imageUrl: file.file.url,
-    author: author,
-    readingTime: '4 min'
-
-  }
-
-
   if (!page || !blocks) {
     return <div />;
   }
   return (
     <article className="sm:mx-auto mx-4 bg-gray-50">
       <div className="flex justify-center items-center">
-        <Image src={post.imageUrl} width={640} height={400} className="object-contain rounded-xl" alt="TOODO" />
+        <Image src={page.properties.Cover.files[0].file.url} width={640} height={400} className="object-contain rounded-xl" alt={page.properties.Cover.files[0].name.split('.')[0]} />
       </div>
       <h1 className="mt-2 block text-4xl py-8 text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl sm:max-w-3xl sm:mx-auto mx-4">
-        {post.title}
+        {page.properties.Name.title[0].plain_text}
       </h1>
       <div className="flex items-center justify-center group pb-6">
-        <Image width={80} height={80} className="object-contain rounded-full" src={post.author.avatar_url} alt={post.author.name} />
+        <Image width={80} height={80} className="object-contain rounded-full" src={page.properties.Author.people[0].avatar_url} alt={page.properties.Author.people[0].name} />
         <div className="ml-3">
-          <div className="block text-xl font-medium text-gray-700">{post.author.name}</div>
-          <div className="block text-base font-medium text-gray-500">{post.date}</div>
-        // </div>
+          <div className="block text-xl font-medium text-gray-700">{page.properties.Author.people[0].name}</div>
+          <div className="block text-base font-medium text-gray-500">{ moment(page.last_edited_time).format('ll') }</div>
+        </div>
       </div>
       <section className="prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50">
         {blocks.map((block) => (
@@ -170,9 +145,15 @@ export default function Post({ page, blocks }) {
 }
 
 export const getStaticPaths = async () => {
-  const database = await getDatabase(databaseId);
+  let database = await getDatabase(databaseId);
+
+  // TODO: Think about sorting
+  database.filter(post => post.properties.Published.checkbox);
+
   const slugs = database.map(page => {
+
     const [rich_text] = page.properties.Slug.rich_text;
+
     return {
       params: {
         slug: rich_text.plain_text,
@@ -213,7 +194,6 @@ export const getStaticProps = async (context) => {
     }
     return block;
   });
-  console.log(blocksWithChildren);
 
   return {
     props: {
