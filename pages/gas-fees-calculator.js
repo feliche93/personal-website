@@ -15,9 +15,7 @@ import {
     RedditIcon,
 } from 'next-share'
 
-
-const listOfCurrencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'NZD', 'CHF', 'JPY', 'SEK', 'NOK', 'DKK', 'HKD', 'SGD', 'THB']
-
+const listOfCurrencies = ['USD' ,'EUR' ,'JPY' ,'GBP' ,'AUD' ,'CAD' ,'CHF' ,'CNY' ,'HKD' ,'NZD' ,'SEK' ,'KRW' ,'SGD' ,'NOK' ,'MXN' ,'INR' ,'RUB' ,'ZAR' ,'TRY' ,'BRL' ,'TWD' ,'DKK' ,'PLN' ,'THB' ,'IDR' ,'HUF' ,'CZK' ,'ILS' ,'CLP' ,'PHP' ,'AED' ,'COP' ,'SAR' ,'MYR' ,'RON']
 export default function test() {
 
     const networks = [
@@ -28,25 +26,6 @@ export default function test() {
             website: 'https://ethereum.org/',
             image: '/networks/etherum_logo.png',
             type: 'Layer 1',
-            currentCost: '$ 11.49'
-        },
-        {
-            network: 'polygon',
-            name: 'Polygon',
-            symbol: 'MATIC',
-            website: 'https://hermez.io/',
-            image: '/networks/polygon_logo.png',
-            type: 'Sidechain',
-            currentCost: '$ 11.49'
-        },
-        {
-            network: 'avalanche',
-            name: 'Avalanche',
-            symbol: 'AVAX',
-            website: 'https://www.avax.network/',
-            image: '/networks/avalanche_logo.png',
-            type: 'Sidechain',
-            currentCost: '$ 11.49'
         },
         {
             network: 'arbitrum',
@@ -55,7 +34,46 @@ export default function test() {
             website: 'https://offchainlabs.com/',
             image: '/networks/arbitrum_one_logo.jpeg',
             type: 'Layer 2',
-            currentCost: '$ 11.49'
+        },
+        {
+            network: 'binance-smart-chain',
+            symbol: 'BNB',
+            name: 'Binance Smart Chain',
+            website: 'https://www.binance.org/en/smartChain',
+            image: '/networks/binance_smart_chain_logo.png',
+            type: 'Sidechain',
+        },
+        {
+            network: 'avalanche',
+            name: 'Avalanche',
+            symbol: 'AVAX',
+            website: 'https://www.avax.network/',
+            image: '/networks/avalanche_logo.png',
+            type: 'Sidechain',
+        },
+        {
+            network: 'polygon',
+            name: 'Polygon',
+            symbol: 'MATIC',
+            website: 'https://hermez.io/',
+            image: '/networks/polygon_logo.png',
+            type: 'Sidechain',
+        },
+        {
+            network: 'fantom',
+            symbol: 'FTM',
+            name: 'fantom',
+            website: 'https://fantom.foundation/',
+            image: '/networks/fantom_logo.png',
+            type: 'Sidechain',
+        },
+        {
+            network: 'harmony',
+            symbol: 'ONE',
+            name: 'Harmony',
+            website: 'https://www.harmony.one/',
+            image: '/networks/harmony_logo.png',
+            type: 'Sidechain',
         },
         // {
         //   name: 'ZKSync',
@@ -265,7 +283,7 @@ export default function test() {
                     isLoadingFiatRates={isLoadingFiatRates}
                     isLoadingNetworkPrices={isLoadingnetworkPrices}
                 />
-                <div class='mt-10 flex items-center  justify-center'>
+                <div className='mt-10 flex items-center  justify-center'>
                     <a href="https://zapper.fi/" target="_blank">
                         <img className="object-center" src="/logos/power-zap-black.svg" alt="" />
                     </a>

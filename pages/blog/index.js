@@ -39,8 +39,6 @@ export default function Page({ posts }) {
 
   })
 
-  console.log(transformedPosts)
-
   return (
     <>
       <NextSeo
