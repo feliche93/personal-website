@@ -117,9 +117,8 @@ const renderBlock = (block) => {
 
 export default function Post({ page, blocks }) {
 
-  console.log(page);
 
-  const published = page.properties.Published.checkbox;
+  const published = page.properties.Published?.checkbox;
 
   const [title] = page.properties.Name.title
   const [description] = page.properties.Description.rich_text
@@ -159,7 +158,7 @@ export default function Post({ page, blocks }) {
         <div className="ml-3">
           <div className="block text-xl font-medium text-gray-700">{post.author.name}</div>
           <div className="block text-base font-medium text-gray-500">{post.date}</div>
-        </div>
+        // </div>
       </div>
       <section className="prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50">
         {blocks.map((block) => (
