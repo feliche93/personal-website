@@ -166,6 +166,7 @@ export default function Post({ page, blocks }) {
         openGraph={{
           title: page.properties.Name.title[0].plain_text,
           description: page.properties.Description.rich_text[0].plain_text,
+          url: `https://www.cryptoneur.xyz/blog/${page.properties.Slug.rich_text[0].plain_text}`,
           images: [
             {
               url: page.properties.Cover.files[0].file.url,
