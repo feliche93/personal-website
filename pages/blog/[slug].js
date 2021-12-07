@@ -5,6 +5,8 @@ import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import WebsiteLayout from "../../components/layout/WebsiteLayout";
 import moment from 'moment';
+import WithLineNumbers from "../../components/blog/CodeWithLineNumbers";
+import Basic from "../../components/blog/BasicCode";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -96,8 +98,7 @@ const renderBlock = (block) => {
     case "child_page":
       return <p>{value.title}</p>;
     case "image":
-      const src =
-        value.type === "external" ? value.external.url : value.file.url;
+      const src = value.type === "external" ? value.external.url : value.file.url;
       const caption = value.caption ? value.caption[0].plain_text : "";
       return (
         <>
@@ -109,6 +110,37 @@ const renderBlock = (block) => {
           {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
         </>
       );
+    case 'quote':
+      console.log(value);
+      return (
+        <blockquote>
+          <p>
+            <Text text={value.text} />
+          </p>
+        </blockquote>
+      )
+    case 'callout':
+      console.log(value);
+      const icon = value.icon.emoji;
+      return (
+        <div className="bg-gray-200 text-gray-900 rounded-lg p-3">
+          <div className="flex justify-start">
+            <div className="text-2xl">{icon}</div>
+            <div className="ml-2"><Text text={value.text} /></div>
+          </div>
+        </div>
+      )
+    case 'code':
+      console.log(value);
+      return (
+        <Basic
+          code={value.text[0].plain_text}
+          language={value.language}
+        />
+        // <CopyButton textInput="Copy">
+        //   <p>What is this?</p>
+        // </CopyButton>
+      )
     default:
       return `❌ Unsupported block (${type === "unsupported" ? "unsupported by Notion API" : type
         })`;
@@ -132,7 +164,7 @@ export default function Post({ page, blocks }) {
         <Image width={80} height={80} className="object-contain rounded-full" src={page.properties.Author.people[0].avatar_url} alt={page.properties.Author.people[0].name} />
         <div className="ml-3">
           <div className="block text-xl font-medium text-gray-700">{page.properties.Author.people[0].name}</div>
-          <div className="block text-base font-medium text-gray-500">{ moment(page.last_edited_time).format('ll') }</div>
+          <div className="block text-base font-medium text-gray-500">{moment(page.last_edited_time).format('ll')}</div>
         </div>
       </div>
       <section className="prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50">
