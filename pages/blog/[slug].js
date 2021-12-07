@@ -5,8 +5,10 @@ import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import WebsiteLayout from "../../components/layout/WebsiteLayout";
 import moment from 'moment';
-import WithLineNumbers from "../../components/blog/CodeWithLineNumbers";
 import Basic from "../../components/blog/BasicCode";
+import Tweet from '../../components/blog/Tweet';
+import { getTweets } from '../../lib/twitter';
+import Highlight from "prism-react-renderer";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -131,16 +133,20 @@ const renderBlock = (block) => {
         </div>
       )
     case 'code':
-      console.log(value);
       return (
         <Basic
           code={value.text[0].plain_text}
           language={value.language}
         />
-        // <CopyButton textInput="Copy">
-        //   <p>What is this?</p>
-        // </CopyButton>
       )
+    case 'embed':
+      // Tweet Embedding
+      if (value?.tweet !== "undefined") {
+        return (
+          <Tweet {...value.tweet} />
+        )
+      }
+
     default:
       return `❌ Unsupported block (${type === "unsupported" ? "unsupported by Notion API" : type
         })`;
@@ -217,15 +223,28 @@ export const getStaticProps = async (context) => {
         };
       })
   );
-  const blocksWithChildren = blocks.map((block) => {
+  const blocksWithChildren = await Promise.all(blocks.map(async (block) => {
     // Add child blocks if the block should contain children but none exists
     if (block.has_children && !block[block.type].children) {
       block[block.type]["children"] = childBlocks.find(
         (x) => x.id === block.id
       )?.children;
     }
+
+    if (block.type === "embed" && block.embed.url.includes("https://twitter.com/")) {
+
+      // https://www.youtube.com/watch?v=xZ9OzPQORtw
+      const elements = block.embed.url.split('/')
+      const elementLength = elements.length
+      const tweetId = elements[elementLength - 1]
+
+      const tweets = await getTweets([tweetId]);
+      block.embed["tweet"] = tweets[0];
+      console.log(tweets);
+
+    }
     return block;
-  });
+  }));
 
   return {
     props: {
