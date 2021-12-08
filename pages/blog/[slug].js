@@ -180,7 +180,7 @@ export default function Post({ page, blocks }) {
           url: `https://www.cryptoneur.xyz/blog/${page.properties.Slug.rich_text[0].plain_text}`,
           images: [
             {
-              url: `https://www.cryptoneur.xyz/blog/${page.staticImageUrl}`,
+              url: `https://www.cryptoneur.xyz${page.staticImageUrl}`,
               alt: page.properties.Cover.files[0].name.split('.')[0]
             }
           ],
