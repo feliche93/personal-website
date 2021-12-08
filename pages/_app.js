@@ -30,8 +30,9 @@ export default function MyApp({ Component, pageProps }) {
       <DefaultSeo
         titleTemplate='Cryptoneur | %s'
         defaultTitle='Cryptoneur'
-        description="Welcome to my personal website! Check out my portofolio projects, browse through my blog posts or get in touch with me for freelance work."
+        description='Welcome to my personal website! Check out my portofolio projects, browse through my blog posts or get in touch with me for freelance work.'
         openGraph={{
+          title: 'Cryptoneur',
           type: 'website',
           locale: 'en_US',
           url: `https://www.cryptoneur.xyz${router.pathname}`,
