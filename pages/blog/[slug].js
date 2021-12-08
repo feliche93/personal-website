@@ -9,6 +9,8 @@ import Basic from "../../components/blog/BasicCode";
 import Tweet from '../../components/blog/Tweet';
 import { getTweets } from '../../lib/twitter';
 import { NextSeo } from "next-seo";
+import axios from "axios";
+import fs from "fs";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -101,15 +103,23 @@ const renderBlock = (block) => {
       return <p>{value.title}</p>;
     case "image":
       const src = value.type === "external" ? value.external.url : value.file.url;
-      const caption = value.caption ? value.caption[0].plain_text : "";
+      const captions = value?.caption.map(element => element.plain_text);
+      const caption = captions.join(' ');
+      // const caption = value?.caption[0] !== 'undefined' ? value.caption[0].plain_text : 'undefined';
       return (
         <>
-          <div className="aspect-w-4 aspect-h-3 relative">
+          <div className="relative">
             <figure>
-              <Image className="object-contain " width={1200} height={800} src={src} alt={caption} />
+              <Image className="object-contain "
+                width={1200}
+                height={600}
+                src={src}
+                alt={caption}
+              />
+              {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
             </figure>
+
           </div>
-          {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
         </>
       );
     case 'quote':
@@ -163,13 +173,14 @@ export default function Post({ page, blocks }) {
       <NextSeo
         title={page.properties.Name.title[0].plain_text}
         description={page.properties.Description.rich_text[0].plain_text}
+
         openGraph={{
           title: page.properties.Name.title[0].plain_text,
           description: page.properties.Description.rich_text[0].plain_text,
           url: `https://www.cryptoneur.xyz/blog/${page.properties.Slug.rich_text[0].plain_text}`,
           images: [
             {
-              url: page.properties.Cover.files[0].file.url,
+              url: `https://www.cryptoneur.xyz${page.staticImageUrl}`,
               alt: page.properties.Cover.files[0].name.split('.')[0]
             }
           ],
@@ -189,7 +200,14 @@ export default function Post({ page, blocks }) {
 
       <article className="sm:mx-auto mx-4 bg-gray-50">
         <div className="flex justify-center items-center">
-          <Image src={page.properties.Cover.files[0].file.url} width={640} height={400} className="object-contain rounded-xl" alt={page.properties.Cover.files[0].name.split('.')[0]} />
+          <Image
+            src={page.staticImageUrl}
+            width={640}
+            height={400}
+            className="object-contain rounded-xl"
+            priority={true}
+            slug={page.properties.Slug.rich_text[0].plain_text}
+            alt={page.properties.Cover.files[0].name.split('.')[0]} />
         </div>
         <h1 className="mt-2 block text-4xl py-8 text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl sm:max-w-3xl sm:mx-auto mx-4">
           {page.properties.Name.title[0].plain_text}
@@ -215,15 +233,16 @@ export const getStaticPaths = async () => {
   let database = await getDatabase(databaseId);
 
   // TODO: Think about sorting
-  database.filter(post => post.properties.Published.checkbox);
+  const posts = database.filter(post => post.properties.Published.checkbox);
 
-  const slugs = database.map(page => {
+  const slugs = posts.map(page => {
 
     const [rich_text] = page.properties.Slug.rich_text;
+    const slug = rich_text.plain_text;
 
     return {
       params: {
-        slug: rich_text.plain_text,
+        slug: slug,
         id: page.id
       }
     };
@@ -239,6 +258,25 @@ export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const { page, pageId } = await getPage(slug, databaseId);
   const blocks = await getBlocks(pageId);
+
+  // download temporary S3 image to static folder
+  axios({
+    method: "get",
+    url: page.properties.Cover.files[0].file.url,
+    responseType: "stream"
+  }).then(function (response) {
+    const filetype = response.headers["content-type"].split('/')[1]
+    response.data.pipe(fs.createWriteStream(`./public/blog/${slug}.${filetype}`));
+
+  });
+
+  const files = fs.readdirSync('./public/blog/');
+  const [staticImageUrl] = files.filter(file => file.includes(slug));
+  // Addss image url to page object
+  page['staticImageUrl'] = `/blog/${staticImageUrl}`;
+  console.log(page);
+
+
 
   // Retrieve block children for nested blocks (one level deep), for example toggle blocks
   // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
@@ -265,7 +303,8 @@ export const getStaticProps = async (context) => {
       // https://www.youtube.com/watch?v=xZ9OzPQORtw
       const elements = block.embed.url.split('/')
       const elementLength = elements.length
-      const tweetId = elements[elementLength - 1]
+      let tweetId = elements[elementLength - 1]
+      tweetId = tweetId.split('?')[0]
 
       const tweets = await getTweets([tweetId]);
       block.embed["tweet"] = tweets[0];
