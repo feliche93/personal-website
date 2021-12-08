@@ -101,15 +101,16 @@ const renderBlock = (block) => {
       return <p>{value.title}</p>;
     case "image":
       const src = value.type === "external" ? value.external.url : value.file.url;
-      const caption = value.caption ? value.caption[0].plain_text : "";
+      const caption = value?.caption[0] !== 'undefined' ? value.caption[0].plain_text : 'undefined';
       return (
         <>
-          <div className="aspect-w-4 aspect-h-3 relative">
+          <div className="relative">
             <figure>
-              <Image className="object-contain " width={1200} height={800} src={src} alt={caption} />
+              <Image className="object-contain " width={1200} height={600} src={src} alt={caption} />
+              {value?.caption[0].plain_text && <figcaption className="pt-5 sm:pt-0.5">{value?.caption[0].plain_text}</figcaption>}
             </figure>
+
           </div>
-          {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
         </>
       );
     case 'quote':
@@ -265,7 +266,8 @@ export const getStaticProps = async (context) => {
       // https://www.youtube.com/watch?v=xZ9OzPQORtw
       const elements = block.embed.url.split('/')
       const elementLength = elements.length
-      const tweetId = elements[elementLength - 1]
+      let tweetId = elements[elementLength - 1]
+      tweetId = tweetId.split('?')[0]
 
       const tweets = await getTweets([tweetId]);
       block.embed["tweet"] = tweets[0];
