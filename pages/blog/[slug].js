@@ -118,7 +118,6 @@ const renderBlock = (block) => {
               />
               {caption && <figcaption className="pt-5 sm:pt-0.5">{caption}</figcaption>}
             </figure>
-
           </div>
         </>
       );
