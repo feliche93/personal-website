@@ -11,8 +11,9 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Gas Fee Caculator', href: '/gas-fees-calculator' },
   { name: 'Blog', href: '/blog' },
+  { name: 'Portfolio', href: '/portfolio' },
   // { name: 'Freelancing', href: '/freelancing' },
-  // { name: 'Portfolio', href: '/portfolio' },
+
 ]
 
 function classNames(...classes) {

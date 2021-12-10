@@ -2,10 +2,6 @@ import { ChatAltIcon, QuestionMarkCircleIcon } from '@heroicons/react/solid'
 import Blockies from "react-blockies";
 
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function AnswerFeed(props) {
 
   const { question } = props;
