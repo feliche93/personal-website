@@ -8,7 +8,6 @@ function classNames(...classes) {
 }
 
 export default function DetailPortfolio({ project }) {
-    console.log();
     return (
         <div className="">
             <div className="pt-6">

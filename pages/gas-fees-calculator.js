@@ -22,9 +22,9 @@ export default function test() {
         {
             network: 'ethereum',
             symbol: 'ETH',
-            name: 'Etherum',
+            name: 'Ethereum',
             website: 'https://ethereum.org/',
-            image: '/networks/etherum_logo.png',
+            image: '/networks/Ethereum_logo.png',
             type: 'Layer 1',
         },
         {

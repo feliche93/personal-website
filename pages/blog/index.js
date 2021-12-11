@@ -43,7 +43,7 @@ export default function Page({ posts }) {
     <>
       <NextSeo
         title="Blog"
-        description="Check out the latest blog posts about Web3, DEFI, Etherum and more."
+        description="Check out the latest blog posts about Web3, DEFI, Ethereum and more."
       />
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-10 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">

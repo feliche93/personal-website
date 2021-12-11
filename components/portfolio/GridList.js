@@ -26,7 +26,7 @@ export const portfolio = [
             to monitor ongoing launch and steer decision making.`,
         skills: [
             'Understanding Dune Table Schema',
-            'Querying the Etherum blockchain',
+            'Querying the Ethereum blockchain',
             'Going from Etherscan Info to calculated SQL metrics',
             'Calculated Gas Fees and other financial metrics from scratch',
             'Showed best practices for dashboard design with adjustable filters and explantory sections',
