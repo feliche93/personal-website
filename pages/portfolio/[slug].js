@@ -1,18 +1,31 @@
-import React from 'react'
-import Layout from '../../components/layout/Layout'
-import WebsiteLayout from '../../components/layout/WebsiteLayout'
+import React from 'react';
+import Layout from '../../components/layout/Layout';
+import WebsiteLayout from '../../components/layout/WebsiteLayout';
 import { NextSeo } from 'next-seo';
-import { portfolio } from '../../components/portfolio/GridList'
-import { useRouter } from 'next/router'
+import { portfolio } from '../../data/portfolio';
 import DetailPortfolio from '../../components/portfolio/DetailPortfolio';
 
-
-
-export default function DeveloperDaoDashboard({project}) {
+export default function DeveloperDaoDashboard({ project }) {
     console.log(project)
     return (
-
-        <DetailPortfolio project={project} />
+        <>
+            <NextSeo
+                title={project.name}
+                description={project.seoDescription}
+                openGraph={{
+                    title: project.title,
+                    description: project.seoDescription,
+                    url: `https://www.cryptoneur.xyz${project.href}`,
+                    images: [
+                        {
+                            url: `https://www.cryptoneur.xyz${project.coverImage}`,
+                            alt: project.title
+                        }
+                    ],
+                }}
+            />
+            <DetailPortfolio project={project} />
+        </>
     )
 }
 

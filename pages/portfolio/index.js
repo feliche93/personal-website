@@ -5,7 +5,13 @@ import GridList from '../../components/portfolio/GridList';
 
 export default function index() {
     return (
-        <GridList/>
+        <>
+            <NextSeo
+                title="Portfolio Projects"
+                description="Overview of all Web3 and Data Engineering Projects with problems, learned skills and demos."
+            />
+            <GridList />
+        </>
     )
 }
 
