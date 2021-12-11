@@ -1,6 +1,6 @@
 import React from 'react'
-import { CheckCircleIcon, ChevronRightIcon, MailIcon } from '@heroicons/react/solid'
-import { portfolio, tagColors } from '../../data/portfolio';
+import { CheckCircleIcon, ChevronRightIcon } from '@heroicons/react/solid'
+import {portfolio, tagColors} from '../../data/portfolio';
 import moment from 'moment'
 import Link from 'next/link'
 
@@ -10,6 +10,8 @@ function classNames(...classes) {
 }
 
 export default function GridList() {
+    console.log(portfolio)
+    console.log(tagColors)
     return (
         <div className="bg-white shadow overflow-hidden sm:rounded-md">
             <ul role="list" className="divide-y divide-gray-200">
@@ -27,7 +29,7 @@ export default function GridList() {
                                                         classNames(
                                                             "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
                                                             tagColors[tag].bgColorClass,
-                                                            tagColors[tag].bgTextColorClass
+                                                            tagColors[tag].textColorClass
                                                         )}>
                                                         {tag}
                                                     </span>

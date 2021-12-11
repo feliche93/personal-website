@@ -1,8 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { NextSeo } from 'next-seo'
-import { tagColors } from '../../data/portfolio';
+import { portfolio, tagColors } from '../../data/portfolio';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -41,7 +40,7 @@ export default function DetailPortfolio({ project }) {
                                         classNames(
                                             "inline-flex items-center px-2.5 py-0.5 rounded-full text-base font-medium",
                                             tagColors[tag].bgColorClass,
-                                            tagColors[tag].bgTextColorClass
+                                            tagColors[tag].textColorClass
                                         )}>
                                         {tag}
                                     </span>
