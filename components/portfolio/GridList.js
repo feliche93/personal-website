@@ -11,8 +11,8 @@ export const portfolio = [
         skills: [
             'Used Next.js incremental static site generation via the Notion API for best performance',
             'Translated Notion blocks into custom CSS Tailwind components',
-            'Optimize SEO with next-seo library',
-            'Optimized Twitter embeddings custom created Tailwind CSS component and Twitter API',
+            'Optimized SEO with next-seo library',
+            'Optimized Twitter embeddings with custom created Tailwind CSS component and Twitter API',
         ],
         coverImage: '/portfolio/blog.png',
         frameworks: [{
