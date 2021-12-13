@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css';
+import '../styles/global.css'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
