@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { portfolio, tagColors } from '../../data/portfolio';
+import { portfolio, tagColors } from './GridList';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -54,7 +54,7 @@ export default function DetailPortfolio({ project }) {
                                 <h3 className="text-sm text-gray-900 font-medium">Framework or Service Used</h3>
                             </div>
 
-                            <div className="pt-3 grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                            <div className="pt-3 flex flex-row space-x-3">
                                 {project.frameworks.map((framework) => (
                                     <a key={framework.name} href={framework.href}>
                                         <Image

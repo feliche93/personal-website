@@ -2,11 +2,11 @@ import React from 'react';
 import Layout from '../../components/layout/Layout';
 import WebsiteLayout from '../../components/layout/WebsiteLayout';
 import { NextSeo } from 'next-seo';
-import { portfolio } from '../../data/portfolio';
+import { portfolio } from '../../components/portfolio/GridList';
 import DetailPortfolio from '../../components/portfolio/DetailPortfolio';
 
-export default function DeveloperDaoDashboard({ project }) {
-    console.log(project)
+export default function Project({ project }) {
+    // console.log(project)
     return (
         <>
             <NextSeo
@@ -29,7 +29,7 @@ export default function DeveloperDaoDashboard({ project }) {
     )
 }
 
-DeveloperDaoDashboard.getLayout = function getLayout(page) {
+Project.getLayout = function getLayout(page) {
     return (
         <Layout>
             <WebsiteLayout>{page}</WebsiteLayout>
