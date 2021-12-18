@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 function AMALayout(props) {
   return (
-    <div className="relative bg-gray-50 overflow-hidden">
+    <div className="relative bg-gray-50 overflow-hidden min-h-screen">
       <div className="relative pt-6 pb-16 sm:pb-24">
         <Popover>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
