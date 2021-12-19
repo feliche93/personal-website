@@ -43,4 +43,4 @@ typechain
 cache
 artifacts
 
-/public/blog/*
+/public/blog/
