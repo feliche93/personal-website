@@ -6,6 +6,8 @@ import BlogPostGrid from "../../components/blog/BlogPostGrid";
 import Layout from "../../components/layout/Layout";
 import WebsiteLayout from "../../components/layout/WebsiteLayout";
 import { NextSeo } from "next-seo";
+import axios from 'axios';
+import fs from 'fs';
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 export default function Page({ posts }) {
@@ -19,7 +21,7 @@ export default function Page({ posts }) {
     const [slug] = post.properties.Slug.rich_text
     const [author] = post.properties.Author.people
     const timestamp = moment(post.last_edited_time)
-    const [file] = post.properties.Cover.files
+    const imageUrl = post.staticImageUrl
 
     let transformedPost = {
       id: post.id,
@@ -29,7 +31,7 @@ export default function Page({ posts }) {
       description: description.plain_text,
       date: timestamp.format('ll'),
       datetime: timestamp.format('YYYY-MM-DD'),
-      imageUrl: file.file.url,
+      imageUrl: imageUrl,
       author: author,
       readingTime: '4 min'
 
@@ -68,6 +70,32 @@ export const getStaticProps = async () => {
 
   // TODO: Think about sorting
   const publishedPosts = database.filter(post => post.properties.Published.checkbox);
+
+  publishedPosts.forEach(page => {
+    const slug = page.properties.Slug.rich_text[0].plain_text;
+
+    fs.mkdir(`./public/blog/${slug}`, { recursive: true }, (err) => {
+      if (err) throw err;
+    });
+
+    // download temporary S3 image to static folder
+    axios({
+      method: 'get',
+      url: page.properties.Cover.files[0].file.url,
+      responseType: 'stream',
+    }).then(function (response) {
+      const filetype = response.headers['content-type'].split('/')[1];
+      response.data.pipe(
+        fs.createWriteStream(`./public/blog/${slug}/${slug}.${filetype}`)
+      );
+    });
+
+    const files = fs.readdirSync(`./public/blog/${slug}`);
+    const [staticImageUrl] = files.filter((file) => file.includes(slug));
+    // Addss image url to page object
+    page['staticImageUrl'] = `/blog/${slug}/${staticImageUrl}`;
+    // console.log(page);
+  });
 
   return {
     props: {
