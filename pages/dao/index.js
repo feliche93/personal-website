@@ -6,6 +6,8 @@ import { NextSeo } from 'next-seo';
 
 // Import ThirdWeb
 import { ThirdwebWeb3Provider } from '@3rdweb/hooks';
+import { ThirdwebSDK } from "@3rdweb/sdk";
+
 
 // Include what chains you wanna support.
 // 4 = Rinkeby.
@@ -16,7 +18,6 @@ const supportedChainIds = [4];
 const connectors = {
   injected: {},
 };
-
 export default function Index() {
 
   return (
