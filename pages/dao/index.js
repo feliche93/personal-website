@@ -27,6 +27,14 @@ export default function Index() {
 
   return (
     <>
+      <NextSeo
+        title="Cryptoneur DAO"
+        description="Mint your Membership to join the Cryptoneur DAO - a DAO for all entrepeneurs in Crypto and Web3."
+        openGraph={{
+          title: 'Cryptoneur DAO',
+          description: 'Mint your Membership to join the Cryptoneur DAO - a DAO for all entrepeneurs in Crypto and Web3.',
+        }}
+      />
       {/* TODO: Notification to be refactored */}
       <div
         aria-live="assertive"
