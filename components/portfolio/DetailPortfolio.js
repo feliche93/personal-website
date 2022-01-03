@@ -10,7 +10,7 @@ function classNames(...classes) {
 export default function DetailPortfolio({ project }) {
     return (
         <div className="pt-1">
-            <div className="aspect-w-16 aspect-h-9 relative">
+            <div className="aspect-video relative">
                 {/* Cover Image */}
                 <Image
                     priority={true}
@@ -38,7 +38,7 @@ export default function DetailPortfolio({ project }) {
                                 {project.tags.map((tag) => (
                                     <span key={tag} className={
                                         classNames(
-                                            "inline-flex items-center px-2.5 py-0.5 rounded-full text-base font-medium",
+                                            "inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium",
                                             tagColors[tag].bgColorClass,
                                             tagColors[tag].textColorClass
                                         )}>

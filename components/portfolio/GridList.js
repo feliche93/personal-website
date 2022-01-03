@@ -5,6 +5,38 @@ import Link from 'next/link'
 
 export const portfolio = [
     {
+        name: 'Cryptoneur DAO',
+        description: 'Completed the buildspace DAO course, building a DAO for Crypto and Web3 Entrepeneurs called Cryptoneur DAO. Smart contracts were deployed to the Rinkbey Test Network via the thirdweb SDK. In the project a membership NFT was created with certain claim conditions to become a member. Furthermore a governance token with an airdrop script was implemented allowing members to create and vote on new proposals.',
+        seoDescription: 'Completed Buildspace DAO Course and created my own Cryptoneur DAO.',
+        skills: [
+            'Created a CryptoneurDAO Membership NFT Collection',
+            'Created CryptoneurDAO Membership Token for members to mint and become part of the DAO with specific claim conditions',
+            'Created an initial supply of 1.000.000 Cryptoneur Governance Token that were airdropped to members via a script',
+            "Created a governance contract for CryptoneurDAO members to submit and vote on proposals"
+        ],
+        coverImage: '/portfolio/cryptoneur_dao_demo.png',
+        frameworks: [{
+            image: '/portfolio/next_js_logo.png',
+            name: 'Next.js',
+            href: 'https://nextjs.org/',
+        },
+        {
+            image: '/portfolio/tailwind_css_logo.png',
+            name: 'Tailwind CSS',
+            href: 'https://tailwindcss.com/',
+        },
+        {
+            image: '/portfolio/third_web_logo.jpeg',
+            name: 'thirdweb',
+            href: 'https://thirdweb.com/',
+        }],
+        tags: ['Next.js', 'Tailwind', 'thirdweb SDK'],
+        date: '2020-12-26',
+        demo: 'Demo available',
+        href: '/portfolio/dao',
+        demoHref: '/dao',
+    },
+    {
         name: 'Cryptoneur Blog',
         description: 'Built a custsom responsive blog with Next.js, Tailwind CSS and Notion as a Content Management System. The Blog follows best SEO practices using Incremental Static Site Generation for best performance and the next-seo library. All notion blocks have been translated into custom Tailwind components.',
         seoDescription: 'Built an SEO optimized Blog with Tailwind CSS, Next.js (ISSG) and Notion as a Content Management System.',
@@ -127,6 +159,10 @@ export const tagColors = {
         bgColorClass: `bg-blue-100`,
         textColorClass: `text-blue-800`
     },
+    "thirdweb SDK": {
+        bgColorClass: `bg-red-100`,
+        textColorClass: `text-red-800`
+    }
 }
 
 function classNames(...classes) {

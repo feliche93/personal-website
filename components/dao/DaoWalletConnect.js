@@ -259,7 +259,7 @@ export default function DaoWalletConnect() {
         {/* Voting */}
         <div>
           <h2 className="text-center py-5 text-lg leading-6 font-semibold">
-            Active Proposals ({memberList.length})
+            Active Proposals
           </h2>
           <form
             onSubmit={async (e) => {
