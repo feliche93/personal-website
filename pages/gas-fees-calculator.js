@@ -188,12 +188,12 @@ export default function GasFeesCalculator() {
     return (
         <>
             <NextSeo
-                title="Gas Fees Calculator"
-                description="Calculate gas fees in local currency for Mainnet, Arbitrum, Polygon and Avalanche."
+                title="Gas Fees Calculator (Multi Currency, Network & Txn Types)"
+                description="Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony."
                 openGraph={{
                     url: 'https://www.url.ie/a',
-                    title: 'Gas Fees Calculator (Multi Currency & Network)',
-                    description: 'Calculate gas fees in local currency for Mainnet, Arbitrum, Polygon and Avalanche.',
+                    title: 'Gas Fees Calculator (Multi Currency, Network & Txn Types)',
+                    description: 'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.',
                     images: [
                         {
                             url : 'https://www.cryptoneur.xyz/screenshots/gas-fees-calculator-screenshot.png',
