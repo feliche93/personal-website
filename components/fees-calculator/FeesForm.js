@@ -2,7 +2,7 @@ import FeesFormCard from "./FeesFormCard"
 
 
 
-export default function Example({children}) {
+export default function FeesForm({children}) {
     return (
         <div className="space-y-6">
             {children}

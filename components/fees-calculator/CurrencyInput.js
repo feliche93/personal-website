@@ -57,7 +57,6 @@ export default function CurrencyInput({
                               <span className={classNames(selectedCurrency ? 'font-semibold' : 'font-normal', 'block truncate')}>
                                 {currency.name}
                               </span>
-
                               {selectedCurrency ? (
                                 <span
                                   className={classNames(

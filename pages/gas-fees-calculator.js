@@ -16,7 +16,8 @@ import {
 } from 'next-share'
 
 const listOfCurrencies = ['USD' ,'EUR' ,'JPY' ,'GBP' ,'AUD' ,'CAD' ,'CHF' ,'CNY' ,'HKD' ,'NZD' ,'SEK' ,'KRW' ,'SGD' ,'NOK' ,'MXN' ,'INR' ,'RUB' ,'ZAR' ,'TRY' ,'BRL' ,'TWD' ,'DKK' ,'PLN' ,'THB' ,'IDR' ,'HUF' ,'CZK' ,'ILS' ,'CLP' ,'PHP' ,'AED' ,'COP' ,'SAR' ,'MYR' ,'RON']
-export default function test() {
+
+export default function GasFeesCalculator() {
 
     const networks = [
         {
@@ -24,7 +25,7 @@ export default function test() {
             symbol: 'ETH',
             name: 'Ethereum',
             website: 'https://ethereum.org/',
-            image: '/networks/Ethereum_logo.png',
+            image: '/networks/ethereum_logo.png',
             type: 'Layer 1',
         },
         {
@@ -35,6 +36,14 @@ export default function test() {
             image: '/networks/arbitrum_one_logo.jpeg',
             type: 'Layer 2',
         },
+        // {
+        //     network: 'Optimism',
+        //     symbol: 'ETH',
+        //     name: 'optimism',
+        //     website: 'https://optimism.io/',
+        //     image: '/networks/optimism_logo.png',
+        //     type: 'Layer 2',
+        // },
         {
             network: 'binance-smart-chain',
             symbol: 'BNB',
@@ -74,29 +83,7 @@ export default function test() {
             website: 'https://www.harmony.one/',
             image: '/networks/harmony_logo.png',
             type: 'Sidechain',
-        },
-        // {
-        //   name: 'ZKSync',
-        //   website: 'https://zksync.io/',
-        //   image: '/networks/zksync_logo.png',
-        //   type: 'Layer 2',
-        //   currentCost: '$ 11.49'
-        // },
-        // {
-        //   name: 'Loopring',
-        //   website: 'https://loopring.io/',
-        //   image: '/networks/loopring_logo.png',
-        //   type: 'Layer 2',
-        //   currentCost: '$ 11.49'
-        // },
-
-        // {
-        //     name: 'Optimism',
-        //     website: 'https://optimism.io/',
-        //     image: '/networks/optimism_logo.png',
-        //     type: 'Layer 2',
-        //     currentCost: '$ 11.49'
-        // },
+        }
     ]
 
     // STATE
@@ -104,8 +91,6 @@ export default function test() {
     const [selectedGasPrice, setSelectedGasPrice] = useState('standard')
     const [tableNetworkPrices, setTableNetworkPrices] = useState([])
     const [usedGas, setUsedGas] = useState(21000)
-    // const [gasPrice, setGasPrice] = useState(120)
-    const ethPrice = 4121.91
 
     const API_KEY = process.env.NEXT_PUBLIC_ZAPPER_API_KEY
     const API_URL = 'https://api.zapper.fi/v1'
@@ -122,7 +107,8 @@ export default function test() {
         });
 
         const filteredCurrencies = currencies.filter(currency => listOfCurrencies.includes(currency.name))
-        setSelectedCurrency(filteredCurrencies[0])
+        // Change the default currency
+        setSelectedCurrency(filteredCurrencies.find(currency => currency.name === 'USD'))
 
         return filteredCurrencies
     }
@@ -155,8 +141,8 @@ export default function test() {
             }));
 
             const data = await requests;
-            console.log("TokenReponse Data")
-            console.log(data)
+            // console.log("TokenReponse Data")
+            // console.log(data)
 
             const cleanedData = networks.map((network, index) => {
 
@@ -194,7 +180,7 @@ export default function test() {
     const { data: fiatRates, isLoading: isLoadingFiatRates, isError: isErrorFiatRates } = useFiatRates()
     const { data: networkPrices, isLoading: isLoadingnetworkPrices, isError: isErrorNetworkPrices } = useNetworkPrices(networks)
 
-    console.log(networkPrices);
+    // console.log(networkPrices);
 
     // if (isLoadingFiatRates && isLoadingnetworkPrices) return <LoadingSpinner />
     // if (isErrorFiatRates && isErrorNetworkPrices) return <h1>Error</h1>
@@ -219,8 +205,8 @@ export default function test() {
                     ]
                 }}
             />
-            <div div className="max-w-7xl mx-auto sm:px-6 lg:px-8" >
-                <div className="">
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+                <div>
                     <div className="max-w-7xl mx-auto px-4 pb-5 sm:py-12 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">Gas Fees Calculator</h2>
@@ -258,7 +244,7 @@ export default function test() {
                     </FeesFormCard>
                     <FeesFormCard
                         title="Used Gas"
-                        description="Every transaction uses gas. Please enter amount of gas used in the transaction."
+                        description="Every transaction uses gas. Pick a common transaction type or enter a custom amount of gas used."
                     >
                         <UsedGasInput
                             usedGas={usedGas}
@@ -299,7 +285,7 @@ export default function test() {
 
 
 
-test.getLayout = function getLayout(page) {
+GasFeesCalculator.getLayout = function getLayout(page) {
     return (
         <Layout>
             <WebsiteLayout>{page}</WebsiteLayout>
