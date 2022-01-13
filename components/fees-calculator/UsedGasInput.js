@@ -11,9 +11,9 @@ export default function UsedGasInput({ usedGas, setUsedGas }) {
 
   const txnTypes = [
     { id: 1, name: 'Standard Transfer', gas: 21000 },
-    { id: 2, name: 'Gnosis Safe Creation with 2 Owners', gas: 263000 },
-    { id: 3, name: 'Gnosis Safe Creation with 3 Owners', gas: 309000 },
-    { id: 4, name: 'Gnosis Safe Creation with 4 Owners', gas: 331000 },
+    { id: 2, name: 'Gnosis Safe Creation with 2 Owners', gas: 307126 },
+    { id: 3, name: 'Gnosis Safe Creation with 3 Owners', gas: 331341 },
+    { id: 4, name: 'Gnosis Safe Creation with 4 Owners', gas: 355556 },
     { id: 5, name: 'Custom Type', gas: usedGas },
   ]
 
