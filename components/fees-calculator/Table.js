@@ -7,7 +7,8 @@ function classNames(...classes) {
 
 export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadingNetworkPrices, selectedCurrency, usedGas, selectedGasPrice }) {
 
-  console.log(usedGas)
+  const isLoading = isLoadingFiatRates || isLoadingNetworkPrices
+  // console.log(usedGas)
 
   return (
     <div className="flex flex-col mt-8">
@@ -72,7 +73,6 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
                             className="object-contain"
                           >
                           </Image>
-                          {/* <img className="h-10 w-10 rounded-full" src={network.image} alt={network.name} /> */}
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">{network.name}</div>
@@ -91,7 +91,7 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {isLoadingNetworkPrices ? <h1>Loading</h1> : (
+                      {isLoading ? <LoadingSpinner/>  : (
                         <>
                           <div className="text-sm text-gray-900">{network.tokenPrice.symbol}</div>
                           <div className="text-sm text-gray-500">{(network.tokenPrice.price * selectedCurrency.value).toFixed(2)} {selectedCurrency.name}</div>
@@ -99,14 +99,14 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {isLoadingNetworkPrices ? <h1>Loading</h1> : (
+                      {isLoading ? <LoadingSpinner/> : (
                         <>
                           <div className="text-sm text-gray-500">{usedGas}</div>
                         </>
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {isLoadingNetworkPrices ? <h1>Loading</h1> : (
+                      {isLoading ? <LoadingSpinner/> : (
                         <>
                           <div className="text-sm capitalize text-gray-900">{selectedGasPrice}</div>
                           <div className="text-sm text-gray-500">{network.gasPrices[selectedGasPrice]}</div>
@@ -114,15 +114,14 @@ export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadin
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap font-bold text-sm text-gray-900">{(
-                      network.tokenPrice.price * selectedCurrency.value * usedGas * network.gasPrices[selectedGasPrice] / 10**9
+                      network.tokenPrice.price * selectedCurrency.value * usedGas * network.gasPrices[selectedGasPrice] / 10 ** 9
 
-                      ).toFixed(4)} {selectedCurrency.name
+                    ).toFixed(4)} {selectedCurrency.name
                       }</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" className="text-blue-600 hover:text-indigo-900">
-
                       </a>
-                     </td>
+                    </td>
                   </tr>
                 ))}
               </tbody>
