@@ -220,7 +220,7 @@ export default function GasFeesCalculator() {
         <ShareButtons
           size={38}
           title={'Found the calculator helpful? Share it with others:'}
-          shareTitle={'Gas Fees Calculator (Multi Currency, Network & Txn Types)'}
+          shareTitle={'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.'}
           shareUrl={'https://www.cryptoneur.xyz/gas-fees-calculator'}
         />
         <FeesForm>
