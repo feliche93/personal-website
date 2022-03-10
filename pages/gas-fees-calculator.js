@@ -178,7 +178,7 @@ export default function GasFeesCalculator() {
   const { data: fiatRates, isLoading: isLoadingFiatRates, isError: isErrorFiatRates } = useFiatRates()
   const { data: networkPrices, isLoading: isLoadingnetworkPrices, isError: isErrorNetworkPrices } = useNetworkPrices(networks)
 
-  // console.log(networkPrices);
+  // console.log('Network Price:', networkPrices);
 
   // if (isLoadingFiatRates && isLoadingnetworkPrices) return <LoadingSpinner />
   // if (isErrorFiatRates && isErrorNetworkPrices) return <h1>Error</h1>
@@ -221,7 +221,7 @@ export default function GasFeesCalculator() {
           size={38}
           title={'Found the calculator helpful? Share it with others:'}
           shareTitle={'Gas Fees Calculator (Multi Currency, Network & Txn Types)'}
-          shareUrl={window.location.href}
+          shareUrl={'https://www.cryptoneur.xyz/gas-fees-calculator'}
         />
         <FeesForm>
           <FeesFormCard
