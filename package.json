@@ -25,7 +25,7 @@
     "hardhat": "^2.6.8",
     "ipfs-http-client": "^50.1.2",
     "moment": "^2.29.1",
-    "next": "latest",
+    "next": "^12.1.0",
     "next-seo": "^4.28.1",
     "next-share": "^0.12.1",
     "next-sitemap": "^1.6.203",
@@ -42,11 +42,11 @@
     "@babel/plugin-transform-runtime": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/forms": "^0.4.0",
-    "@tailwindcss/line-clamp": "^0.3.0",
-    "@tailwindcss/typography": "^0.5.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.1"
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.8",
+    "tailwindcss": "^3.0.23"
   }
 }
