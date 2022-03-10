@@ -17,7 +17,7 @@ export default function CurrencyInput({
 
   return (
     <>
-      <div className="col-span-3 sm:col-span-2">
+      <div className="col-span-1 sm:col-span-1">
         <Listbox value={selectedCurrency} onChange={setSelectedCurrency}>
           {({ open }) => (
             <>

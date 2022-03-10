@@ -32,7 +32,7 @@ export default function UsedGasInput({ usedGas, setUsedGas }) {
 
   return (
     <>
-      <div className="col-span-3 sm:col-span-2">
+      <div className="col-span-1 sm:col-span-1">
         <Listbox value={selectedTxnType} onChange={handleTxnTypeChange}>
           {({ open }) => (
             <>
