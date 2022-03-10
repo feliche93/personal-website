@@ -1,3 +1,4 @@
+import { ShareButtons } from './../components/ShareButtons';
 import Layout from '../components/layout/Layout'
 import WebsiteLayout from '../components/layout/WebsiteLayout'
 import useSWR from 'swr'
@@ -10,10 +11,7 @@ import UsedGasInput from '../components/fees-calculator/UsedGasInput'
 import GasPriceRadio from '../components/fees-calculator/GasPriceRadio'
 import Table from '../components/fees-calculator/Table'
 import { NextSeo } from 'next-seo'
-import {
-  RedditShareButton,
-  RedditIcon,
-} from 'next-share'
+
 
 const listOfCurrencies = ['USD', 'EUR', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF', 'CNY', 'HKD', 'NZD', 'SEK', 'KRW', 'SGD', 'NOK', 'MXN', 'INR', 'RUB', 'ZAR', 'TRY', 'BRL', 'TWD', 'DKK', 'PLN', 'THB', 'IDR', 'HUF', 'CZK', 'ILS', 'CLP', 'PHP', 'AED', 'COP', 'SAR', 'MYR', 'RON']
 
@@ -207,7 +205,7 @@ export default function GasFeesCalculator() {
       />
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div>
-          <div className="max-w-7xl mx-auto px-4 pb-5 sm:py-12 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 pb-5 sm:pt-12 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">Gas Fees Calculator</h2>
               <p className="mt-1 text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl">
@@ -217,19 +215,14 @@ export default function GasFeesCalculator() {
                 Start calculating gas fees for the biggest networks at different transaction speeds in your own local currency for a variety of transcations.
               </p>
             </div>
-            {/*
-                        TODO: Add share button
-                        <div className="my-5flex justify-center space-x-6">
-                            <RedditShareButton
-                                url={'https://github.com/next-share'}
-                                title={'next-share is a social share buttons for your next React apps.'}
-                            >
-                                Bla test
-                            </RedditShareButton>
-                        </div>
-                        */}
           </div>
         </div>
+        <ShareButtons
+          size={38}
+          title={'Found the calculator helpful? Share it with others:'}
+          shareTitle={'Gas Fees Calculator (Multi Currency, Network & Txn Types)'}
+          shareUrl={window.location.href}
+        />
         <FeesForm>
           <FeesFormCard
             title="Local Currency"
@@ -275,9 +268,6 @@ export default function GasFeesCalculator() {
           </a>
         </div>
       </div>
-
-
-
     </>
 
   )
