@@ -8,7 +8,6 @@ function classNames(...classes) {
 export default function Table({ tableNetworkPrices, isLoadingFiatRates, isLoadingNetworkPrices, selectedCurrency, usedGas, selectedGasPrice }) {
 
   const isLoading = isLoadingFiatRates || isLoadingNetworkPrices
-  // console.log(usedGas)
 
   return (
     <div className="flex flex-col mt-8">

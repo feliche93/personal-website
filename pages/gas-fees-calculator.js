@@ -129,28 +129,24 @@ export default function GasFeesCalculator() {
       const requests = Promise.all(networks.map(async network => {
         const gasPriceResponse = await axios.get(`${apiUrl}/gas-price`, { params: { ...network, api_key: API_KEY } })
         const tokenPriceResponse = await axios.get(`${apiUrl}/prices`, { params: { ...network, api_key: API_KEY } })
-        const tokenListResponse = await axios.get(`${apiUrl}/token-list`, { params: { api_key: API_KEY } })
 
         const gasPriceData = gasPriceResponse.data
         const tokenPriceData = tokenPriceResponse.data
-        const tokenListResponseData = tokenListResponse.data.tokens
 
-        return { gasPriceData, tokenPriceData, tokenListResponseData }
+        return {
+          gasPriceData, tokenPriceData
+        }
       }));
 
       const data = await requests;
-      // console.log("TokenReponse Data")
-      // console.log(data)
 
       const cleanedData = networks.map((network, index) => {
 
-        const [token] = data[index].tokenListResponseData.filter(token => token.symbol === network.symbol)
         const gasPrices = data[index].gasPriceData
         const [tokenPrice] = data[index].tokenPriceData.filter(token => token.symbol === network.symbol)
 
         return {
           ...network,
-          token,
           gasPrices,
           tokenPrice,
         }
@@ -178,10 +174,6 @@ export default function GasFeesCalculator() {
   const { data: fiatRates, isLoading: isLoadingFiatRates, isError: isErrorFiatRates } = useFiatRates()
   const { data: networkPrices, isLoading: isLoadingnetworkPrices, isError: isErrorNetworkPrices } = useNetworkPrices(networks)
 
-  // console.log('Network Price:', networkPrices);
-
-  // if (isLoadingFiatRates && isLoadingnetworkPrices) return <LoadingSpinner />
-  // if (isErrorFiatRates && isErrorNetworkPrices) return <h1>Error</h1>
 
   return (
     <>
