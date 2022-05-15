@@ -13,8 +13,7 @@ import Table from '../components/fees-calculator/Table';
 import { NextSeo } from 'next-seo';
 
 export default function GasFeesCalculator(props) {
-
-  const { activeCurrency, networkPrices, fiatRates } = props;
+  const { activeCurrency, networkPrices, fiatRates, currencies } = props;
 
   // STATE
   const [selectedCurrency, setSelectedCurrency] = useState(activeCurrency);
@@ -24,12 +23,13 @@ export default function GasFeesCalculator(props) {
   return (
     <>
       <NextSeo
-        title="Gas Fees Calculator (Multi Currency, Network & Txn Types)"
-        description="Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony."
+        title='Gas Fees Calculator (Multi Currency, Network & Txn Types)'
+        description='Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Optimism, Binance Smart Chain, Avalanche, Polygon, Gnosis, Celo, Moonriver, Fantom and Harmony.'
         openGraph={{
           url: 'https://www.url.ie/a',
           title: 'Gas Fees Calculator (Multi Currency, Network & Txn Types)',
-          description: 'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.',
+          description:
+            'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Optimism, Binance Smart Chain, Avalanche, Polygon, Gnosis, Celo, Moonriver, Fantom and Harmony.',
           images: [
             {
               url: 'https://www.cryptoneur.xyz/screenshots/gas-fees-calculator-screenshot.png',
@@ -38,19 +38,23 @@ export default function GasFeesCalculator(props) {
               alt: 'Gas Fees Calculator (Multi Currency & Network)',
               type: 'image/jpeg',
             },
-          ]
+          ],
         }}
       />
-      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+      <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
         <div>
-          <div className="max-w-7xl mx-auto px-4 pb-5 sm:pt-12 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">Gas Fees Calculator</h2>
-              <p className="mt-1 text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl">
+          <div className='max-w-7xl mx-auto px-4 pb-5 sm:pt-12 sm:px-6 lg:px-8'>
+            <div className='text-center'>
+              <h2 className='text-base font-semibold text-blue-600 tracking-wide uppercase'>
+                Gas Fees Calculator
+              </h2>
+              <p className='mt-1 text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl'>
                 Sick of Paying too high gas fees?
               </p>
-              <p className="max-w-4xl mt-5 mx-auto text-xl text-gray-500">
-                Start calculating gas fees for the biggest networks at different transaction speeds in your own local currency for a variety of transcations.
+              <p className='max-w-4xl mt-5 mx-auto text-xl text-gray-500'>
+                Start calculating gas fees for the biggest networks at different
+                transaction speeds in your own local currency for a variety of
+                transcations.
               </p>
             </div>
           </div>
@@ -58,31 +62,30 @@ export default function GasFeesCalculator(props) {
         <ShareButtons
           size={38}
           title={'Found the calculator helpful? Share it with others:'}
-          shareTitle={'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.'}
+          shareTitle={
+            'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.'
+          }
           shareUrl={'https://www.cryptoneur.xyz/gas-fees-calculator'}
         />
         <FeesForm>
           <FeesFormCard
-            title="Local Currency"
-            description="Select the currency you want the fees to be displayed in."
+            title='Local Currency'
+            description='Select the currency you want the fees to be displayed in.'
           >
             <CurrencyInput
               selectedCurrency={selectedCurrency}
               setSelectedCurrency={setSelectedCurrency}
-              currencies={fiatRates}
+              currencies={currencies}
             />
           </FeesFormCard>
           <FeesFormCard
-            title="Used Gas"
-            description="Every transaction uses gas. Pick a common transaction type or enter a custom amount of gas used."
+            title='Used Gas'
+            description='Every transaction uses gas. Pick a common transaction type or enter a custom amount of gas used.'
           >
-            <UsedGasInput
-              usedGas={usedGas}
-              setUsedGas={setUsedGas}
-            />
+            <UsedGasInput usedGas={usedGas} setUsedGas={setUsedGas} />
           </FeesFormCard>
           <FeesFormCard
-            title="Gas Price"
+            title='Gas Price'
             description="Gas fees are paid in each network's native currency."
           >
             <GasPriceRadio
@@ -98,8 +101,12 @@ export default function GasFeesCalculator(props) {
           networkPrices={networkPrices}
         />
         <div className='mt-10 flex items-center  justify-center'>
-          <a href="https://zapper.fi/" target="_blank">
-            <img className="object-center" src="/logos/power-zap-black.svg" alt="" />
+          <a href='https://zapper.fi/' target='_blank'>
+            <img
+              className='object-center'
+              src='/logos/power-zap-black.svg'
+              alt=''
+            />
           </a>
         </div>
       </div>
@@ -109,9 +116,9 @@ export default function GasFeesCalculator(props) {
 
 export async function getStaticProps(context) {
   const API_KEY = process.env.NEXT_PUBLIC_ZAPPER_API_KEY;
-  const API_URL = 'https://api.zapper.fi/v1';
+  const API_URL = 'https://api.zapper.fi/v2';
 
-  const currencySymbols = [
+  const currencies = [
     'USD',
     'EUR',
     'JPY',
@@ -154,6 +161,7 @@ export async function getStaticProps(context) {
       network: 'ethereum',
       symbol: 'ETH',
       name: 'Ethereum',
+      coinGeckoId: 'ethereum',
       website: 'https://ethereum.org/',
       image: '/networks/ethereum_logo.png',
       type: 'Layer 1',
@@ -162,22 +170,25 @@ export async function getStaticProps(context) {
       network: 'arbitrum',
       symbol: 'ETH',
       name: 'Arbitrum One',
+      coinGeckoId: 'ethereum',
       website: 'https://offchainlabs.com/',
       image: '/networks/arbitrum_one_logo.jpeg',
       type: 'Layer 2',
     },
-    // {
-    //     network: 'Optimism',
-    //     symbol: 'ETH',
-    //     name: 'optimism',
-    //     website: 'https://optimism.io/',
-    //     image: '/networks/optimism_logo.png',
-    //     type: 'Layer 2',
-    // },
+    {
+      network: 'optimism',
+      symbol: 'ETH',
+      name: 'Optimism',
+      coinGeckoId: 'ethereum',
+      website: 'https://optimism.io/',
+      image: '/networks/optimism_logo.jpeg',
+      type: 'Layer 2',
+    },
     {
       network: 'binance-smart-chain',
       symbol: 'BNB',
       name: 'Binance Smart Chain',
+      coinGeckoId: 'binancecoin',
       website: 'https://www.binance.org/en/smartChain',
       image: '/networks/binance_smart_chain_logo.png',
       type: 'Sidechain',
@@ -186,6 +197,7 @@ export async function getStaticProps(context) {
       network: 'avalanche',
       name: 'Avalanche',
       symbol: 'AVAX',
+      coinGeckoId: 'avalanche-2',
       website: 'https://www.avax.network/',
       image: '/networks/avalanche_logo.png',
       type: 'Sidechain',
@@ -194,14 +206,43 @@ export async function getStaticProps(context) {
       network: 'polygon',
       name: 'Polygon',
       symbol: 'MATIC',
+      coinGeckoId: 'matic-network',
       website: 'https://hermez.io/',
       image: '/networks/polygon_logo.png',
+      type: 'Sidechain',
+    },
+    {
+      network: 'gnosis',
+      name: 'Gnosis',
+      symbol: 'XDAI',
+      coinGeckoId: 'xdai',
+      website: 'https://www.xdaichain.com/',
+      image: '/networks/gnosis_logo.png',
+      type: 'Sidechain',
+    },
+    {
+      network: 'celo',
+      name: 'Celo',
+      symbol: 'CELO',
+      coinGeckoId: 'celo',
+      website: 'https://celo.org/',
+      image: '/networks/celo_logo.png',
+      type: 'Sidechain',
+    },
+    {
+      network: 'moonriver',
+      name: 'Moonriver',
+      symbol: 'MOVR',
+      coinGeckoId: 'moonriver',
+      website: 'https://moonbeam.network/networks/moonriver/',
+      image: '/networks/moonriver_logo.png',
       type: 'Sidechain',
     },
     {
       network: 'fantom',
       symbol: 'FTM',
       name: 'fantom',
+      coinGeckoId: 'fantom',
       website: 'https://fantom.foundation/',
       image: '/networks/fantom_logo.png',
       type: 'Sidechain',
@@ -210,94 +251,84 @@ export async function getStaticProps(context) {
       network: 'harmony',
       symbol: 'ONE',
       name: 'Harmony',
+      coinGeckoId: 'harmony',
       website: 'https://www.harmony.one/',
       image: '/networks/harmony_logo.png',
       type: 'Sidechain',
     },
   ];
 
-  const fetchFiatRates = async (apiUrl) => {
+  const fetchFiatRates = async () => {
+
+    let ids = networks.map(network => network.coinGeckoId).join(',');
+
     try {
-      const response = await axios.get(`${apiUrl}/fiat-rates`, {
-        params: { api_key: API_KEY },
-      });
-      const data = response.data;
-
-      let currencies = new Array();
-
-      Object.entries(data).forEach(([key, value]) => {
-        const element = { name: key, value: value };
-        currencies.push(element);
+      const res = await axios({
+        method: 'get',
+        url: 'https://api.coingecko.com/api/v3/simple/price',
+        params: {
+          ids,
+          vs_currencies: currencies.join(','),
+        },
       });
 
-      const fiatRates = currencies.filter((currency) =>
-        currencySymbols.includes(currency.name)
-      );
+      const data = res.data;
 
-      return fiatRates;
+      return data;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const fiatRates = await fetchFiatRates(API_URL);
-  const activeCurrency = fiatRates.find(currency => currency.name === 'USD')
-
-
-  const fetchNetworkPrices = async (apiUrl, networks) => {
-
+  const fetchGasPrices = async (apiUrl, networks) => {
     try {
       const requests = Promise.all(
-        networks.map(async ({network}) => {
-
-          const gasPriceResponse = await axios.get(`${apiUrl}/gas-price`, {
-            params: { network, api_key: API_KEY },
-          });
-          const tokenPriceResponse = await axios.get(`${apiUrl}/prices`, {
+        networks.map(async ({ network }) => {
+          const gasPriceResponse = await axios.get(`${apiUrl}/gas-prices`, {
             params: { network, api_key: API_KEY },
           });
 
-          const gasPriceData = gasPriceResponse.data;
-          const tokenPriceData = tokenPriceResponse.data;
+          const data = gasPriceResponse.data;
 
-          return {
-            gasPriceData,
-            tokenPriceData,
-          };
+          return data;
         })
       );
 
       let data = await requests;
 
-      data = networks.map((network, index) => {
-
-        const gasPrices = data[index].gasPriceData;
-
-        const [tokenPrice] = data[index].tokenPriceData.filter(
-          (token) => token.symbol === network.symbol
-        );
-
-        return {
-          ...network,
-          gasPrices,
-          tokenPrice,
-        };
-      });
-
       return data;
 
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   };
 
-  const networkPrices = await fetchNetworkPrices(API_URL, networks);
+  const gasPrices = await fetchGasPrices(API_URL, networks);
+  const fiatRates = await fetchFiatRates();
+
+  // console.log(gasPrices);
+  // console.log(fiatRates);
+
+  let networkPrices = networks.map((network, index) => {
+    const gasPrice = gasPrices[index]
+
+    const tokenPrice = fiatRates[network.coinGeckoId];
+
+    return {
+      ...network,
+      gasPrice,
+      tokenPrice,
+    };
+  });
+
+  // console.log(networkPrices);
 
   return {
     props: {
       fiatRates,
-      activeCurrency,
+      activeCurrency: 'USD',
       networkPrices,
+      currencies
     },
     revalidate: 10, // In seconds
   };
