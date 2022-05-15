@@ -11,10 +11,13 @@ export default function UsedGasInput({ usedGas, setUsedGas }) {
 
   const txnTypes = [
     { id: 1, name: 'Standard Transfer', gas: 21000 },
-    { id: 2, name: 'Gnosis Safe Creation with 2 Owners', gas: 307126 },
-    { id: 3, name: 'Gnosis Safe Creation with 3 Owners', gas: 331341 },
-    { id: 4, name: 'Gnosis Safe Creation with 4 Owners', gas: 355556 },
-    { id: 5, name: 'Custom Type', gas: usedGas },
+    { id: 2, name: 'OpenSea: Sale', gas: 202326 },
+    { id: 3, name: 'Uniswap V3: Swap', gas: 184523 },
+    { id: 4, name: 'USDT: Transfer', gas: 54128 },
+    { id: 5, name: 'Gnosis Safe: Creation with 2 Owners', gas: 307126 },
+    { id: 6, name: 'Gnosis Safe: Creation with 3 Owners', gas: 331341 },
+    { id: 7, name: 'Gnosis Safe: Creation with 4 Owners', gas: 355556 },
+    { id: 8, name: 'Custom Type', gas: usedGas },
   ]
 
   const [selectedTxnType, setSelectedTxnType] = useState(txnTypes[0])
