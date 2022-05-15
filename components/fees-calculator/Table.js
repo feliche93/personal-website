@@ -104,13 +104,11 @@ export default function Table({
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='text-sm text-gray-900'>
-                        {network.tokenPrice.symbol}
+                        {network.symbol}
                       </div>
                       <div className='text-sm text-gray-500'>
-                        {(
-                          network.tokenPrice.price * selectedCurrency.value
-                        ).toFixed(2)}{' '}
-                        {selectedCurrency.name}
+                        {network.tokenPrice[selectedCurrency.toLocaleLowerCase()] }{' '}
+                        {selectedCurrency}
                       </div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
@@ -121,15 +119,14 @@ export default function Table({
                         {selectedGasPrice}
                       </div>
                       <div className='text-sm text-gray-500'>
-                        {network.gasPrices[selectedGasPrice]}
+                        {network.gasPrice[selectedGasPrice]}
                       </div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap font-bold text-sm text-gray-900'>
                       {(
-                        (network.tokenPrice.price *
-                          selectedCurrency.value *
+                        (network.tokenPrice[selectedCurrency.toLocaleLowerCase()] *
                           usedGas *
-                          network.gasPrices[selectedGasPrice]) /
+                          network.gasPrice[selectedGasPrice]) /
                         10 ** 9
                       ).toFixed(4)}{' '}
                       {selectedCurrency.name}

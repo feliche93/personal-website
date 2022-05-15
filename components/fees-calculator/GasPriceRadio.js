@@ -7,7 +7,7 @@ function classNames(...classes) {
 
 export default function GasPriceSelection({ selectedGasPrice, setSelectedGasPrice }) {
 
-    console.log(selectedGasPrice)
+    // console.log(selectedGasPrice)
     const gasPriceOption = [
         'standard', 'fast', 'instant'
     ]

@@ -26,7 +26,7 @@ export default function UsedGasInput({ usedGas, setUsedGas }) {
 
   function handleTxnTypeChange(event) {
     setSelectedTxnType(event);
-    console.log(event.gas);
+    // console.log(event.gas);
     setUsedGas(event.gas);
   }
 
