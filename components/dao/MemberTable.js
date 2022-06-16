@@ -16,17 +16,17 @@ export default function MemberTable({ memberList }) {
         <div className="py-2 align-middle inline-block min-w-fit sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-fit divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-100">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider"
                   >
                     Address
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider"
                   >
                     Token Amount
                   </th>
@@ -37,12 +37,12 @@ export default function MemberTable({ memberList }) {
                   return (
                     <tr
                       key={member.address}
-                      // className={memberIdx % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                    // className={memberIdx % 2 === 0 ? "bg-white" : "bg-gray-100"}
                     >
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {shortenAddress(member.address)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {member.tokenAmount}
                       </td>
                     </tr>

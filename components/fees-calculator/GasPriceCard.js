@@ -5,7 +5,7 @@ function classNames(...classes) {
 }
 
 
-function GasPriceCard({item}) {
+function GasPriceCard({ item }) {
     return (
         <div
             key={item.id}
@@ -15,7 +15,7 @@ function GasPriceCard({item}) {
                 <div className="absolute bg-blue-500 rounded-md p-3">
                     <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
-                <p className="ml-16 text-sm font-medium text-gray-500 truncate">{item.name}</p>
+                <p className="ml-16 text-sm font-medium text-gray-600 truncate">{item.name}</p>
             </dt>
             <dd className="ml-16 pb-6 flex items-baseline sm:pb-7">
                 <p className="text-2xl font-semibold text-gray-900">{item.stat}</p>
@@ -34,7 +34,7 @@ function GasPriceCard({item}) {
                     <span className="sr-only">{item.changeType === 'increase' ? 'Increased' : 'Decreased'} by</span>
                     {item.change}
                 </p>
-                <div className="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
+                <div className="absolute bottom-0 inset-x-0 bg-gray-100 px-4 py-4 sm:px-6">
                     <div className="text-sm">
                         <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
                             {' '}

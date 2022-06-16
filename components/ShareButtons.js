@@ -18,8 +18,8 @@ import {
 
 export function ShareButtons({ size, title, shareUrl, shareTitle }) {
     return (
-        <div className="py-10 space-y-4">
-            <h2 className="text-center text-gray-500">{title}</h2>
+        <div className="pt-5 pb-10 space-y-4">
+            <h2 className="text-center text-gray-600">{title}</h2>
             <div className="flex justify-center space-x-2">
                 <RedditShareButton url={shareUrl} title={shareTitle}>
                     <RedditIcon round size={size} />

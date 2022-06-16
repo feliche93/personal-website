@@ -53,7 +53,7 @@ export default function MyApp({ Component, pageProps }) {
           cardType: 'summary_large_image',
         }}
       />
-      <div className="bg-gray-50">
+      <div className="bg-gray-100">
         <Component {...pageProps} />
       </div>
     </>

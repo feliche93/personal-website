@@ -23,8 +23,8 @@ function ConnectWallet(props) {
     }
   }
 
-  const mobile = "block w-full px-5 py-3 text-center font-medium text-blue-600 bg-gray-50 hover:bg-gray-100"
-  const desktop = "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50"
+  const mobile = "block w-full px-5 py-3 text-center font-medium text-blue-600 bg-gray-100 hover:bg-gray-100"
+  const desktop = "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-100"
   return (
     <>
       {currentAccount !== '' &&

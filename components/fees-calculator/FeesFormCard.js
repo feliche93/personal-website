@@ -4,7 +4,7 @@ function FeesFormCard({ title, description, children }) {
             <div className="md:grid md:grid-cols-2 md:gap-6">
                 <div className="md:col-span-1">
                     <h3 className="text-lg font-medium leading-6 text-gray-900">{title}</h3>
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-sm text-gray-600">
                         {description}
                     </p>
                 </div>

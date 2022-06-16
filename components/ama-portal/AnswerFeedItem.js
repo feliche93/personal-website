@@ -29,7 +29,7 @@ export default function AnswerFeed(props) {
                         />
 
                         <span className="absolute -bottom-0.5 -right-1 bg-white rounded-xl px-0.5 py-px">
-                          <QuestionMarkCircleIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                          <QuestionMarkCircleIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
                         </span>
                       </div>
                       <div className="min-w-0 flex-1">
@@ -39,7 +39,7 @@ export default function AnswerFeed(props) {
                               {questionItem.person.address}
                             </a>
                           </div>
-                          <p className="mt-0.5 text-sm text-gray-500">Asked {questionItem.date}
+                          <p className="mt-0.5 text-sm text-gray-600">Asked {questionItem.date}
                           </p>
                         </div>
                         <div className="mt-2 text-sm text-gray-700">
@@ -58,7 +58,7 @@ export default function AnswerFeed(props) {
                         />
 
                         <span className="absolute -bottom-0.5 -right-1 bg-white rounded-xl px-0.5 py-px">
-                          <ChatAltIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                          <ChatAltIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
                         </span>
                       </div>
                       <div className="min-w-0 flex-1">
@@ -68,7 +68,7 @@ export default function AnswerFeed(props) {
                               {questionItem.person.address === "0xDc33191c2b27F7fAD1C8e5e8360a3bb48e2236B9" ? "Felix (0xDc33191c2b27F7fAD1C8e5e8360a3bb48e2236B9)" : questionItem.person.address}
                             </a>
                           </div>
-                          <p className="mt-0.5 text-sm text-gray-500">Answered {questionItem.date}</p>
+                          <p className="mt-0.5 text-sm text-gray-600">Answered {questionItem.date}</p>
                         </div>
                         <div className="mt-2 text-sm text-gray-700">
                           <p>{questionItem.text}</p>

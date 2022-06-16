@@ -385,8 +385,8 @@ export default function DaoWalletConnect() {
                 {isVoting
                   ? "Voting..."
                   : hasVoted
-                  ? "You Already Voted"
-                  : "Submit Votes"}
+                    ? "You Already Voted"
+                    : "Submit Votes"}
               </button>
               <small className="text-gray-600 pt-5">
                 This will trigger multiple transactions that you will need to

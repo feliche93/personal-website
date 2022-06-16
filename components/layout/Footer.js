@@ -50,7 +50,7 @@ const navigation = {
             name: 'LinkedIn',
             href: 'https://www.linkedin.com/in/felix-vemmer/',
             icon: (props) => (
-                <svg fill="currentColor" viewBox="0 0 24 24" {...props} xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <svg fill="currentColor" viewBox="0 0 24 24" {...props} xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
             ),
         },
         {
@@ -71,12 +71,12 @@ const navigation = {
 
 export default function Example() {
     return (
-        <footer className="bg-gray-50">
+        <footer className="bg-gray-100">
             <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
                 <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
                     {navigation.main.map((item) => (
                         <div key={item.name} className="px-5 py-2">
-                            <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                            <a href={item.href} className="text-base text-gray-600 hover:text-gray-900">
                                 {item.name}
                             </a>
                         </div>
@@ -85,14 +85,14 @@ export default function Example() {
                 <div className="mt-8 flex justify-center space-x-6">
                     {navigation.social.map((item) => (
                         <Link key={item.name} href={item.href}>
-                            <a className="text-gray-400 hover:text-gray-500">
+                            <a className="text-gray-600 hover:text-gray-600">
                                 <span className="sr-only">{item.name}</span>
                                 <item.icon className="h-6 w-6" aria-hidden="true" />
                             </a>
                         </Link>
                     ))}
                 </div>
-                <p className="mt-8 text-center text-base text-gray-500">&copy; 2021 Cryptoneur.</p>
+                <p className="mt-8 text-center text-base text-gray-600">&copy; 2022 Cryptoneur.</p>
             </div>
         </footer>
     )

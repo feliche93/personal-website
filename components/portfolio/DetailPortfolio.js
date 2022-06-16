@@ -94,7 +94,7 @@ export default function DetailPortfolio({ project }) {
                         <div className="mt-4">
                             <ul role="list" className="pl-4 list-disc text-sm space-y-2">
                                 {project.skills.map((skill) => (
-                                    <li key={skill} className="text-gray-400">
+                                    <li key={skill} className="text-gray-600">
                                         <span className="text-gray-600">{skill}</span>
                                     </li>
                                 ))}

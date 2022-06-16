@@ -37,12 +37,12 @@ function SimpleNotification(props) {
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
                     <p className="text-sm font-medium text-gray-900">{header}</p>
-                    <p className="mt-1 text-sm text-gray-500">{message} <a href={href} target="_blank" className="text-blue-800">here.</a></p>
+                    <p className="mt-1 text-sm text-gray-600">{message} <a href={href} target="_blank" className="text-blue-800">here.</a></p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
-                      className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => setNotification({...notification, show: false})}
+                      className="bg-white rounded-md inline-flex text-gray-600 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => setNotification({ ...notification, show: false })}
                     >
                       <span className="sr-only">Close</span>
                       <XIcon className="h-5 w-5" aria-hidden="true" />

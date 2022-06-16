@@ -40,7 +40,7 @@ export default function Tweet({
                         alt={author.username}
                         height={48}
                         width={48}
-                        src={author.profile_image_url.replace("_normal.jpg",".jpg")}
+                        src={author.profile_image_url.replace("_normal.jpg", ".jpg")}
                         className="rounded-full object-contain"
                     />
                 </a>
@@ -67,7 +67,7 @@ export default function Tweet({
                             </svg>
                         ) : null}
                     </span>
-                    <span className="!text-gray-500" title={`@${author.username}`}>
+                    <span className="!text-gray-600" title={`@${author.username}`}>
                         @{author.username}
                     </span>
                 </a>
@@ -115,7 +115,7 @@ export default function Tweet({
             ) : null}
             {quoteTweet ? <Tweet {...quoteTweet} /> : null}
             <a
-                className="!text-gray-500 text-sm hover:!underline"
+                className="!text-gray-600 text-sm hover:!underline"
                 href={tweetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -129,7 +129,7 @@ export default function Tweet({
             </a>
             <div className="flex !text-gray-700 dark:!text-gray-300 mt-2">
                 <a
-                    className="flex items-center mr-4 !text-gray-500 hover:!text-blue-600 transition hover:!underline"
+                    className="flex items-center mr-4 !text-gray-600 hover:!text-blue-600 transition hover:!underline"
                     href={replyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -143,7 +143,7 @@ export default function Tweet({
                     <span>{new Number(public_metrics.reply_count).toLocaleString()}</span>
                 </a>
                 <a
-                    className="flex items-center mr-4 !text-gray-500 hover:!text-green-600 transition hover:!underline"
+                    className="flex items-center mr-4 !text-gray-600 hover:!text-green-600 transition hover:!underline"
                     href={retweetUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -159,7 +159,7 @@ export default function Tweet({
                     </span>
                 </a>
                 <a
-                    className="flex items-center !text-gray-500 hover:!text-red-600 transition hover:!underline"
+                    className="flex items-center !text-gray-600 hover:!text-red-600 transition hover:!underline"
                     href={likeUrl}
                     target="_blank"
                     rel="noopener noreferrer"

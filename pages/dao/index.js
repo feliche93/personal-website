@@ -60,11 +60,11 @@ export default function Index() {
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
                     <p className="text-sm font-medium text-gray-900">Connect to the Rinkbey Test Nework</p>
-                    <p className="mt-1 text-sm text-gray-500">Make sure to connect to the  <b>Rinkbey</b> test network for this demo to run.</p>
+                    <p className="mt-1 text-sm text-gray-600">Make sure to connect to the  <b>Rinkbey</b> test network for this demo to run.</p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
-                      className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      className="bg-white rounded-md inline-flex text-gray-600 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       onClick={() => {
                         setShow(false)
                       }}

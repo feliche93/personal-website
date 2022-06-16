@@ -3,7 +3,7 @@ import Footer from './Footer'
 
 export default function WebsiteLayout(props) {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-100 min-h-screen">
       <WebsiteNavbar></WebsiteNavbar>
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         {props.children}

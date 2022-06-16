@@ -20,7 +20,7 @@ function Hero() {
           <span className="block xl:inline">👋 Welcome to my</span>{' '}
           <span className="block text-blue-600 xl:inline">personal website</span>
         </h1>
-        <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        <p className="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           Hey, I am Felix, a full-stack Web3 Developer and Data Engineer based in Berlin. Check out my portfolio projects, browse through my blog posts, or get in touch with me for freelance work.
         </p>
         <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
@@ -38,7 +38,7 @@ function Hero() {
             <Link href="/blog">
               <a
 
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10"
               >
                 Blog
               </a>

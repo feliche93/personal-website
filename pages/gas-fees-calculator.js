@@ -53,7 +53,7 @@ export default function GasFeesCalculator(props) {
               <p className='mt-1 text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl'>
                 Sick of Paying too high gas fees?
               </p>
-              <p className='max-w-4xl mt-5 mx-auto text-xl text-gray-500'>
+              <p className='max-w-4xl mt-5 mx-auto text-xl text-gray-600'>
                 Start calculating gas fees for the biggest networks at different
                 transaction speeds in your own local currency for a variety of
                 transcations.
@@ -67,12 +67,13 @@ export default function GasFeesCalculator(props) {
 
         >
           <div className='flex flex-col items-center'>
+            <p className='text-gray-600 pt-5 px-5 text-center'>Support this public good through a Gitcoin Grant:</p>
             <Image
               src={gitcoinGrant}
               height={100}
               width={300}
             />
-            <p className='text-gray-500 px-5 text-center'>Support this public good through a Gitcoin Grant.</p>
+
           </div>
         </a>
         <ShareButtons
