@@ -2,11 +2,16 @@ import '../styles/global.css'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
+import proilePic from '../public/profilePic.png'
 
 export default function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page)
   const router = useRouter()
+  const host = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
+
+  console.log(proilePic)
+  console.log(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000')
 
   return getLayout(
     <>
@@ -37,6 +42,13 @@ export default function MyApp({ Component, pageProps }) {
           locale: 'en_US',
           url: `https://www.cryptoneur.xyz${router.pathname}`,
           site_name: 'Cryptoneur',
+          images: [
+            {
+              url: `${host}${proilePic.src}`,
+              width: proilePic.width,
+              height: proilePic.height,
+              alt: 'Cryptoneur Pfofile',
+            }]
         }}
         twitter={{
           handle: '@FelixVemmer',

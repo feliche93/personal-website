@@ -26,6 +26,10 @@ export default function CompanyCloud() {
             name: 'PwC',
             logo: '/logos/pwc.svg',
         },
+        {
+            name: 'CryptoTicker',
+            logo: '/logos/cryptoticker.png',
+        }
     ]
 
     return (
