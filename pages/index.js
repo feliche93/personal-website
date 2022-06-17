@@ -59,7 +59,7 @@ export const getStaticProps = async () => {
     "client_x509_cert_url": process.env.CLIENT_X509_CERT_URL,
   }
 
-  console.log(serviceAccount);
+  // console.log(serviceAccount);
 
   const analyticsDataClient = new BetaAnalyticsDataClient(
     { credentials: serviceAccount },
