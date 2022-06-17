@@ -17,8 +17,6 @@ export default function Page(
   }
 ) {
 
-  console.log(activeUsers30DaysData)
-
   return (
     <>
       <NextSeo
@@ -142,9 +140,10 @@ export const getStaticProps = async () => {
 
     data.length > 1 ? data.push({ name: 'changePercent', value: (data[0].value - data[1].value) / data[1].value * 100 }) : data.push({ 'change': 0 })
     data.length > 1 ? data.push({ name: 'changeAbsolut', value: (data[0].value - data[1].value) }) : data.push({ 'changeAbsolut': 0 })
-    console.log(data);
+    // console.log(data);
     return data;
   }
+
 
   const [
     activeUsers30DaysData,
@@ -164,5 +163,4 @@ export const getStaticProps = async () => {
     },
     revalidate: 60 * 60 * 2,
   }
-
 }
