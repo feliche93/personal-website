@@ -16,7 +16,7 @@ function AskQuestion(props) {
     txn: "",
   });
 
-  console.log(contractAddress, contractAbi);
+  // console.log(contractAddress, contractAbi);
 
   const askQuestion = async () => {
     try {
@@ -42,7 +42,7 @@ function AskQuestion(props) {
         setQuestion("")
         setLoading(false)
 
-        console.log("Mined -- ", questionTxn.hash);
+        // console.log("Mined -- ", questionTxn.hash);
         setNotification({
           show: true,
           message: "Check transaction details ",
@@ -54,11 +54,11 @@ function AskQuestion(props) {
 
 
       } else {
-        console.log("Ethereum object doesn't exist!");
+        // console.log("Ethereum object doesn't exist!");
         setLoading(false)
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       setLoading(false)
     }
   }

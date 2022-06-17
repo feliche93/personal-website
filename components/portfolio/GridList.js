@@ -170,8 +170,8 @@ function classNames(...classes) {
 }
 
 export default function GridList() {
-    console.log(portfolio)
-    console.log(tagColors)
+    // console.log(portfolio)
+    // console.log(tagColors)
     return (
         <div className="bg-white shadow overflow-hidden sm:rounded-md">
             <ul role="list" className="divide-y divide-gray-200">

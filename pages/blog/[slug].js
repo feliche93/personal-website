@@ -174,7 +174,7 @@ export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />;
   }
-  console.log(page.staticImageUrl);
+  // console.log(page.staticImageUrl);
   return (
     <>
       <NextSeo
@@ -359,7 +359,7 @@ export const getStaticProps = async (context) => {
           const [staticImageUrl] = files.filter((file) => file.includes(fileName));
           // Addss image url to page object
           block.image.file.url = `/blog/${slug}/${staticImageUrl}`;
-          console.log(block.image.file.url);
+          // console.log(block.image.file.url);
         });
       }
       return block;

@@ -1,5 +1,5 @@
 export default function MemberTable({ memberList }) {
-  console.log(memberList);
+  // console.log(memberList);
   // A fancy function to shorten someones wallet address, no need to show the whole thing.
   const shortenAddress = (str) => {
     return str.substring(0, 6) + "..." + str.substring(str.length - 4);

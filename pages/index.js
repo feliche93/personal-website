@@ -6,7 +6,6 @@ import Skills from '../components/Skills';
 import CompanyCloud from '../components/CompanyCloud';
 import Calendar from '../components/Calendar';
 import { BetaAnalyticsDataClient } from '@google-analytics/data'
-import dynamic from 'next/dynamic'
 import WebsiteStats from '../components/WebsiteStats';
 
 export default function Page(
@@ -59,6 +58,8 @@ export const getStaticProps = async () => {
     "auth_provider_x509_cert_url": process.env.AUTH_PROVIDER_X509_CERT_URL,
     "client_x509_cert_url": process.env.CLIENT_X509_CERT_URL,
   }
+
+  console.log(serviceAccount);
 
   const analyticsDataClient = new BetaAnalyticsDataClient(
     { credentials: serviceAccount },
