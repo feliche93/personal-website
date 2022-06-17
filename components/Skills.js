@@ -44,7 +44,7 @@ function Skills() {
                 <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                     What I can help you with? 💪
                 </p>
-                <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
+                <p className="mt-5 max-w-prose mx-auto text-xl text-gray-600">
                     I am a self-taught programmer with a CEMS Master in International Management. Having both a business and deep technical understanding allows me to easily communicate complex technical ideas with business stakeholders.
                 </p>
                 <div className="mt-12">
@@ -59,17 +59,17 @@ function Skills() {
                                             </span>
                                         </div>
                                         <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">{skill.name}</h3>
-                                        <p className="mt-5 text-base text-gray-500">
+                                        <p className="mt-5 text-base text-gray-600">
                                             {skill.description}
                                         </p>
                                         <p className="mt-5 text-base font-medium text-blue-600">{skill.skillDescription}</p>
                                         <div>
-                                            <p className="mt-2 text-base text-gray-500">{skill.skillList.join(", ")}</p>
+                                            <p className="mt-2 text-base text-gray-600">{skill.skillList.join(", ")}</p>
                                         </div>
                                         <p className="mt-5 text-base font-medium text-blue-600">{skill.toolDescription}</p>
                                         <ul>
                                             {skill.toolList.map((tool) => (
-                                                <li key={tool} className="mt-2 text-sm font-base text-gray-500">{tool}</li>
+                                                <li key={tool} className="mt-2 text-sm font-base text-gray-600">{tool}</li>
                                             ))}
                                         </ul>
                                     </div>

@@ -8,10 +8,7 @@ export default function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page)
   const router = useRouter()
-  const host = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
-
-  console.log(proilePic)
-  console.log(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000')
+  const host = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` || 'http://localhost:3000'
 
   return getLayout(
     <>
@@ -40,7 +37,7 @@ export default function MyApp({ Component, pageProps }) {
           title: 'Cryptoneur',
           type: 'website',
           locale: 'en_US',
-          url: `https://www.cryptoneur.xyz${router.pathname}`,
+          url: `${host}${router.pathname}`,
           site_name: 'Cryptoneur',
           images: [
             {
@@ -56,7 +53,7 @@ export default function MyApp({ Component, pageProps }) {
           cardType: 'summary_large_image',
         }}
       />
-      <div className="bg-gray-50">
+      <div className="bg-gray-100">
         <Component {...pageProps} />
       </div>
     </>

@@ -16,7 +16,7 @@ function AskQuestion(props) {
     txn: "",
   });
 
-  console.log(contractAddress, contractAbi);
+  // console.log(contractAddress, contractAbi);
 
   const askQuestion = async () => {
     try {
@@ -42,7 +42,7 @@ function AskQuestion(props) {
         setQuestion("")
         setLoading(false)
 
-        console.log("Mined -- ", questionTxn.hash);
+        // console.log("Mined -- ", questionTxn.hash);
         setNotification({
           show: true,
           message: "Check transaction details ",
@@ -54,18 +54,18 @@ function AskQuestion(props) {
 
 
       } else {
-        console.log("Ethereum object doesn't exist!");
+        // console.log("Ethereum object doesn't exist!");
         setLoading(false)
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       setLoading(false)
     }
   }
 
   return (
     <>
-      <SimpleNotification notification={notification} setNotification={setNotification}/>
+      <SimpleNotification notification={notification} setNotification={setNotification} />
       <div>
         <div className="mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <h2 className="block text-3xl font-extrabold tracking-tight text-gray-900 sm:block sm:text-4xl">

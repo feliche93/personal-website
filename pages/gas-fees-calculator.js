@@ -11,6 +11,8 @@ import UsedGasInput from '../components/fees-calculator/UsedGasInput';
 import GasPriceRadio from '../components/fees-calculator/GasPriceRadio';
 import Table from '../components/fees-calculator/Table';
 import { NextSeo } from 'next-seo';
+import Image from 'next/image';
+import gitcoinGrant from '../public/logos/gitcoinGrant.svg';
 
 export default function GasFeesCalculator(props) {
   const { activeCurrency, networkPrices, fiatRates, currencies } = props;
@@ -24,12 +26,12 @@ export default function GasFeesCalculator(props) {
     <>
       <NextSeo
         title='Gas Fees Calculator (Multi Currency, Network & Txn Types)'
-        description='Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Optimism, Binance Smart Chain, Avalanche, Polygon, Gnosis, Celo, Moonriver, Fantom and Harmony.'
+        description='Calculate gas fees in your local currency for different transaction types on Mainnet, Arbitrum, Optimism, Binance Smart Chain, Avalanche, Polygon, Gnosis, Celo, Moonriver, Fantom and Harmony.'
         openGraph={{
           url: 'https://www.url.ie/a',
           title: 'Gas Fees Calculator (Multi Currency, Network & Txn Types)',
           description:
-            'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Optimism, Binance Smart Chain, Avalanche, Polygon, Gnosis, Celo, Moonriver, Fantom and Harmony.',
+            'Calculate gas fees in your local currency for different transaction types on Mainnet, Arbitrum, Optimism, Binance Smart Chain, Avalanche, Polygon, Gnosis, Celo, Moonriver, Fantom and Harmony.',
           images: [
             {
               url: 'https://www.cryptoneur.xyz/screenshots/gas-fees-calculator-screenshot.png',
@@ -51,7 +53,7 @@ export default function GasFeesCalculator(props) {
               <p className='mt-1 text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl'>
                 Sick of Paying too high gas fees?
               </p>
-              <p className='max-w-4xl mt-5 mx-auto text-xl text-gray-500'>
+              <p className='max-w-4xl mt-5 mx-auto text-xl text-gray-600'>
                 Start calculating gas fees for the biggest networks at different
                 transaction speeds in your own local currency for a variety of
                 transcations.
@@ -59,11 +61,26 @@ export default function GasFeesCalculator(props) {
             </div>
           </div>
         </div>
+        <a href="https://gitcoin.co/grants/5753/gas-fees-calculator-multi-currency-network-txn-ty"
+          target={'_blank'}
+          rel="noopener noreferrer"
+
+        >
+          <div className='flex flex-col items-center'>
+            <p className='text-gray-600 pt-5 px-5 text-center'>Support this public good through a Gitcoin Grant:</p>
+            <Image
+              src={gitcoinGrant}
+              height={100}
+              width={300}
+            />
+
+          </div>
+        </a>
         <ShareButtons
           size={38}
           title={'Found the calculator helpful? Share it with others:'}
           shareTitle={
-            'Calculate gas fees in your local currency for diferent transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.'
+            'Calculate gas fees in your local currency for different transaction types on Mainnet, Arbitrum, Binance Smart Chain, Avalanche, Polygon, Fantom and Harmony.'
           }
           shareUrl={'https://www.cryptoneur.xyz/gas-fees-calculator'}
         />

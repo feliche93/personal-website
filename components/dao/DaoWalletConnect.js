@@ -11,7 +11,7 @@ import ActiveProposals from "./ActiveProposals";
 export default function DaoWalletConnect() {
   // Use the connectWallet hook thirdweb gives us.
   const { connectWallet, address, error, provider } = useWeb3();
-  console.log("👋 Address:", address);
+  // console.log("👋 Address:", address);
 
   // The signer is required to sign transactions on the blockchain.
   // Without it we can only read data, not write.
@@ -59,7 +59,7 @@ export default function DaoWalletConnect() {
     bundleDropModule
       .getAllClaimerAddresses("0")
       .then((addresess) => {
-        console.log("🚀 Members addresses", addresess);
+        // console.log("🚀 Members addresses", addresess);
         setMemberAddresses(addresess);
       })
       .catch((err) => {
@@ -77,7 +77,7 @@ export default function DaoWalletConnect() {
     tokenModule
       .getAllHolderBalances()
       .then((amounts) => {
-        console.log("👜 Amounts", amounts);
+        // console.log("👜 Amounts", amounts);
         setMemberTokenAmounts(amounts);
       })
       .catch((err) => {
@@ -96,7 +96,7 @@ export default function DaoWalletConnect() {
       .then((proposals) => {
         // Set state!
         setProposals(proposals);
-        console.log("🌈 Proposals:", proposals);
+        // console.log("🌈 Proposals:", proposals);
       })
       .catch((err) => {
         console.error("failed to get proposals", err);
@@ -120,7 +120,7 @@ export default function DaoWalletConnect() {
       .hasVoted(proposals[0].proposalId, address)
       .then((hasVoted) => {
         setHasVoted(hasVoted);
-        console.log("🥵 User has already voted");
+        // console.log("🥵 User has already voted");
       })
       .catch((err) => {
         console.error("failed to check if wallet has voted", err);
@@ -162,10 +162,10 @@ export default function DaoWalletConnect() {
         // If balance is greater than 0, they have our NFT!
         if (balance.gt(0)) {
           setHasClaimedNFT(true);
-          console.log("🌟 this user has a membership NFT!");
+          // console.log("🌟 this user has a membership NFT!");
         } else {
           setHasClaimedNFT(false);
-          console.log("😭 this user doesn't have a membership NFT.");
+          // console.log("😭 this user doesn't have a membership NFT.");
         }
       })
       .catch((error) => {
@@ -212,9 +212,9 @@ export default function DaoWalletConnect() {
         // Set claim state.
         setHasClaimedNFT(true);
         // Show user their fancy new NFT!
-        console.log(
-          `🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${bundleDropModule.address}/0`
-        );
+        // console.log(
+        // `🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${bundleDropModule.address}/0`
+        // );
       });
   };
 
@@ -331,7 +331,7 @@ export default function DaoWalletConnect() {
                     // if we get here that means we successfully voted, so let's set the "hasVoted" state to true
                     setHasVoted(true);
                     // and log out a success message
-                    console.log("successfully voted");
+                    // console.log("successfully voted");
                   } catch (err) {
                     console.error("failed to execute votes", err);
                   }
@@ -385,8 +385,8 @@ export default function DaoWalletConnect() {
                 {isVoting
                   ? "Voting..."
                   : hasVoted
-                  ? "You Already Voted"
-                  : "Submit Votes"}
+                    ? "You Already Voted"
+                    : "Submit Votes"}
               </button>
               <small className="text-gray-600 pt-5">
                 This will trigger multiple transactions that you will need to

@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 function AMALayout(props) {
   return (
-    <div className="relative bg-gray-50 overflow-hidden min-h-screen">
+    <div className="relative bg-gray-100 overflow-hidden min-h-screen">
       <div className="relative pt-6 pb-16 sm:pb-24">
         <Popover>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -34,7 +34,7 @@ function AMALayout(props) {
                     </a>
                   </Link>
                   <div className="-mr-2 flex items-center md:hidden">
-                    <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                    <Popover.Button className="bg-gray-100 rounded-md p-2 inline-flex items-center justify-center text-gray-600 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                       <span className="sr-only">Open main menu</span>
                       <MenuIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -44,7 +44,7 @@ function AMALayout(props) {
               <div className="hidden md:flex md:space-x-10">
                 {navigation.map((item) => (
                   <Link href={item.href} key={item.name}>
-                    <a className="font-medium text-gray-500 hover:text-gray-900">
+                    <a className="font-medium text-gray-600 hover:text-gray-900">
                       {item.name}
                     </a>
                   </Link>
@@ -79,7 +79,7 @@ function AMALayout(props) {
                     <span className="pl-2 text-left text-xl sm:text-2xl text-blue-800 font-mono tracking-tight" >Web3 AMA</span>
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-600 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                       <span className="sr-only">Close menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -89,7 +89,7 @@ function AMALayout(props) {
                   {navigation.map((item) => (
                     <Link key={item.name} href={item.href}>
                       <a
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                       >
                         {item.name}
                       </a>

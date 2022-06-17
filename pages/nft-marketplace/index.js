@@ -58,7 +58,7 @@ export default function NFTMarketplace() {
 
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
 
-    const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, {value: price})
+    const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, { value: price })
     await transaction.wait()
 
     // reload page to have 1 less NFT
@@ -76,11 +76,11 @@ export default function NFTMarketplace() {
           {
             nfts.map((nft, i) => (
               <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image}/>
+                <img src={nft.image} />
                 <div className="p-4">
                   <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{nft.description}</p>
+                    <p className="text-gray-600">{nft.description}</p>
                   </div>
                 </div>
                 <div className="p-4 bg-black">

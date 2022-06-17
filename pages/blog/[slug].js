@@ -174,7 +174,7 @@ export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />;
   }
-  console.log(page.staticImageUrl);
+  // console.log(page.staticImageUrl);
   return (
     <>
       <NextSeo
@@ -200,7 +200,7 @@ export default function Post({ page, blocks }) {
         }}
       />
 
-      <article className='sm:mx-auto mx-4 bg-gray-50'>
+      <article className='sm:mx-auto mx-4 bg-gray-100'>
         <div className='flex justify-center items-center'>
           <Image
             src={page.staticImageUrl}
@@ -227,12 +227,12 @@ export default function Post({ page, blocks }) {
             <div className='block text-xl font-medium text-gray-700'>
               {page.properties.Author.people[0].name}
             </div>
-            <div className='block text-base font-medium text-gray-500'>
+            <div className='block text-base font-medium text-gray-600'>
               {moment(page.last_edited_time).format('ll')}
             </div>
           </div>
         </div>
-        <section className='prose prose-blue prose-lg text-gray-500 sm:mx-auto mx-4 bg-gray-50'>
+        <section className='prose prose-blue prose-lg text-gray-600 sm:mx-auto mx-4 bg-gray-100'>
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
@@ -359,7 +359,7 @@ export const getStaticProps = async (context) => {
           const [staticImageUrl] = files.filter((file) => file.includes(fileName));
           // Addss image url to page object
           block.image.file.url = `/blog/${slug}/${staticImageUrl}`;
-          console.log(block.image.file.url);
+          // console.log(block.image.file.url);
         });
       }
       return block;

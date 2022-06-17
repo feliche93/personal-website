@@ -17,41 +17,41 @@ export default function Table({
         <div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
           <div className='shadow overflow-hidden border-b border-gray-200 sm:rounded-lg'>
             <table className='min-w-full divide-y divide-gray-200'>
-              <thead className='bg-gray-50'>
+              <thead className='bg-gray-100'>
                 <tr>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider'
                   >
                     Name
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider'
                   >
                     Type
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider'
                   >
                     Token
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider'
                   >
                     Gas Used
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider'
                   >
                     Gas Price
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider'
                   >
                     Current Cost
                   </th>
@@ -81,7 +81,7 @@ export default function Table({
                           <a
                             href={network.website}
                             target='_blank'
-                            className='text-sm text-gray-500'
+                            className='text-sm text-gray-600'
                           >
                             {network.website}
                           </a>
@@ -94,8 +94,8 @@ export default function Table({
                           network.type === 'Layer 1'
                             ? 'bg-gray-100 text-gray-800'
                             : network.type === 'Sidechain'
-                            ? 'bg-indigo-100 text-indigo-800'
-                            : 'bg-blue-100 text-blue-800',
+                              ? 'bg-indigo-100 text-indigo-800'
+                              : 'bg-blue-100 text-blue-800',
                           'px-2 inline-flex text-xs leading-5 font-semibold rounded-full'
                         )}
                       >
@@ -106,19 +106,19 @@ export default function Table({
                       <div className='text-sm text-gray-900'>
                         {network.symbol}
                       </div>
-                      <div className='text-sm text-gray-500'>
-                        {network.tokenPrice[selectedCurrency.toLocaleLowerCase()] }{' '}
+                      <div className='text-sm text-gray-600'>
+                        {network.tokenPrice[selectedCurrency.toLocaleLowerCase()]}{' '}
                         {selectedCurrency}
                       </div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
-                      <div className='text-sm text-gray-500'>{usedGas}</div>
+                      <div className='text-sm text-gray-600'>{usedGas}</div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='text-sm capitalize text-gray-900'>
                         {selectedGasPrice}
                       </div>
-                      <div className='text-sm text-gray-500'>
+                      <div className='text-sm text-gray-600'>
                         {network.gasPrice[selectedGasPrice]}
                       </div>
                     </td>
