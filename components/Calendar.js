@@ -35,7 +35,7 @@ export default function Calendar() {
             calLink: "felix-vemmer/30-minute-google-hangout-chat"
           });
 
-          Cal("ui", {"styles":{"branding":{"brandColor":"#000000"}}});
+          Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#3182ce"}}});
           `,
           }}
         />

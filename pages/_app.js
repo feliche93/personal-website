@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { DefaultSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
 import proilePic from '../public/profilePic.png'
+import PlausibleProvider from 'next-plausible'
 
 export default function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
@@ -53,9 +54,14 @@ export default function MyApp({ Component, pageProps }) {
           cardType: 'summary_large_image',
         }}
       />
-      <div className="bg-gray-100">
-        <Component {...pageProps} />
-      </div>
+      <PlausibleProvider
+        domain='cryptoneur.xyz'
+        trackOutboundLinks={true}
+      >
+        <div className="bg-gray-100">
+          <Component {...pageProps} />
+        </div>
+      </PlausibleProvider>
     </>
 
   )
