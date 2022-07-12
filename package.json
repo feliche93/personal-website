@@ -27,6 +27,7 @@
     "ipfs-http-client": "^50.1.2",
     "moment": "^2.29.1",
     "next": "^12.1.6",
+    "next-plausible": "^3.2.0",
     "next-seo": "^4.28.1",
     "next-share": "^0.14.0",
     "next-sitemap": "^1.6.203",
