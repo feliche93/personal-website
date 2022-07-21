@@ -4,12 +4,20 @@ import { DefaultSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
 import proilePic from '../public/profilePic.png'
 import PlausibleProvider from 'next-plausible'
+import { usePostHog } from 'next-use-posthog'
 
 export default function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page)
   const router = useRouter()
   const host = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` || 'http://localhost:3000'
+
+  usePostHog('phc_IXe7mC7sXnw988kXvNiNw4sb910x6C8CJpkdfKkPYPy', {
+    api_host: 'https://app.posthog.com',
+    loaded: (posthog) => {
+      if (process.env.NODE_ENV === 'development') posthog.opt_out_capturing()
+    },
+  })
 
   return getLayout(
     <>
