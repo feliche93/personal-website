@@ -23,7 +23,7 @@ function WebsiteStats({
                             <GlobeAltIcon className='h-5 w-5 text-blue-500' />
                             <h2>Website Visits</h2>
                         </div>
-                        <p className='bg-gray-100 rounded-full px-2 py-1 text-sm text-gray-900 '>Lifetime</p>
+                        <p className='bg-gray-100 rounded-full px-2 py-1 text-sm text-gray-900 text-center'>Lifetime</p>
                     </div>
                     <p className='font-bold text-4xl py-4'>{activeUsersData[0].value}</p>
 
@@ -35,7 +35,7 @@ function WebsiteStats({
                             <GlobeAltIcon className='h-5 w-5 text-blue-500' />
                             <h2>Website Visits</h2>
                         </div>
-                        <p className='bg-gray-100 rounded-full px-2 py-1 text-sm text-gray-900 '>Last 30 days</p>
+                        <p className='bg-gray-100 rounded-full px-2 py-1 text-sm text-gray-900 text-center'>Last 30 days</p>
                     </div>
                     <p className='font-bold text-4xl py-4'>{activeUsers30DaysData[0].value}</p>
                     {activeUsers30DaysData[2].value > 0 ? (
@@ -57,7 +57,7 @@ function WebsiteStats({
                             <ClockIcon className='h-5 w-5 text-blue-500' />
                             <h2>Session Duration</h2>
                         </div>
-                        <p className='bg-gray-100 rounded-full px-2 py-1 text-sm text-gray-900 '>Last 30 days</p>
+                        <p className='bg-gray-100 rounded-full px-2 py-1 text-sm text-gray-900 text-center'>Last 30 days</p>
                     </div>
                     <p className='font-bold text-4xl py-4'>{averageSessionDuration30DaysData[0].value} <span className=' font-normal text-base'>seconds</span></p>
                     {averageSessionDuration30DaysData[2].value > 0 ? (
