@@ -258,7 +258,7 @@ export async function getStaticProps(context) {
     {
       network: 'fantom',
       symbol: 'FTM',
-      name: 'fantom',
+      name: 'Fantom',
       coinGeckoId: 'fantom',
       website: 'https://fantom.foundation/',
       image: '/networks/fantom_logo.png',
