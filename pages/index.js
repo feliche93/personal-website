@@ -22,14 +22,15 @@ export default function Page(
         title="Home"
       />
       <Hero />
-      <Calendar />
-      <Skills />
-      <CompanyCloud />
       <WebsiteStats
         activeUsers30DaysData={activeUsers30DaysData}
         activeUsersData={activeUsersData}
         averageSessionDuration30DaysData={averageSessionDuration30DaysData}
       />
+      <Skills />
+      <CompanyCloud />
+      <Calendar />
+
 
 
     </>
