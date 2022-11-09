@@ -347,7 +347,7 @@ export async function getStaticProps(context) {
       networkPrices,
       currencies
     },
-    revalidate: 10, // In seconds
+    revalidate: 60 * 5, // Every 5 minutes
   };
 }
 
