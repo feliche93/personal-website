@@ -115,7 +115,7 @@ export default function GasFeesCalculator(props) {
 }
 
 export async function getStaticProps(context) {
-  const API_KEY = process.env.NEXT_PUBLIC_ZAPPER_API_KEY;
+  const API_KEY = process.env.ZAPPER_API_KEY;
   const API_URL = 'https://api.zapper.fi/v2';
 
   const currencies = [
@@ -290,6 +290,8 @@ export async function getStaticProps(context) {
 
           const data = gasPriceResponse.data;
 
+          // console.log("Data ", data)
+
           return data;
         })
       );
@@ -304,6 +306,9 @@ export async function getStaticProps(context) {
   };
 
   const gasPrices = await fetchGasPrices(API_URL, networks);
+
+  // console.log("Gas Prices ", gasPrices);
+
   const fiatRates = await fetchFiatRates();
 
   // console.log(gasPrices);
