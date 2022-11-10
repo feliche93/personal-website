@@ -94,8 +94,8 @@ export default function Table({
                           network.type === 'Layer 1'
                             ? 'bg-gray-100 text-gray-800'
                             : network.type === 'Sidechain'
-                            ? 'bg-indigo-100 text-indigo-800'
-                            : 'bg-blue-100 text-blue-800',
+                              ? 'bg-indigo-100 text-indigo-800'
+                              : 'bg-blue-100 text-blue-800',
                           'px-2 inline-flex text-xs leading-5 font-semibold rounded-full'
                         )}
                       >
@@ -107,7 +107,7 @@ export default function Table({
                         {network.symbol}
                       </div>
                       <div className='text-sm text-gray-500'>
-                        {network.tokenPrice[selectedCurrency.toLocaleLowerCase()] }{' '}
+                        {network.tokenPrice[selectedCurrency.toLocaleLowerCase()]}{' '}
                         {selectedCurrency}
                       </div>
                     </td>
@@ -129,7 +129,7 @@ export default function Table({
                           network.gasPrice[selectedGasPrice]) /
                         10 ** 9
                       ).toFixed(4)}{' '}
-                      {selectedCurrency.name}
+                      {selectedCurrency}
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                       <a

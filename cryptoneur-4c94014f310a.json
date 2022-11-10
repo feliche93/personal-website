@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cryptoneur",
+  "private_key_id": "4c94014f310a439961769b2fb6ddb22f2c1bf73b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtwVA8O/YsXq1c\ny3mqnCDxpLSL+GuS2oW61bm13ctEG4dgRvl/zhqb04aqZvJ9KfwodD30ZUdYm1bm\nL1iIyi13DStDH1T6ParTxBAMes0xIFZobsmIcbDrjKAkcFf8pGvVPN870FT3GcLk\n2FbS8PcXtkeH+32Km/8uq+b7KFzRq+a0DVrW2jyVXNPnpoclI6gs7wc4sWzNVy77\nK+zf6iHRw2u8l7m8QmsQ8STaxzuGgCW0etO8ubjhJ7+sCZc5oQ1/M9hIcydXgUxB\nGGpWYI/mrnepG8e/4BRDbc82Jq/qBOCSXWYfhKDlAybW8JmdyD1Du+3wcTboKedl\nOULnj12/AgMBAAECggEAASbKflZeD6CNAOlu+VIm5xMSsz7Gj7xCWKD5UHA+MZ8G\nav1CwrW9+BG9zxFMQsdtdA3ZKe57O5DD/FXh/f4WW7dK9cXrt+uCtKaUU1DZB/NR\nP0iaA1J65q9m5vbro7FUmZ7ZUo8okP6rC6iMuBcqvA3UNDLW0SgELUNXDjZlRGp0\nFeqREEcU2t1x+zX0REsOyyDfPZ2f/u9HjET1xfzqi8beonzm3mTL3hVVoQZSVzty\nlbfnW0z4zJPJ3HY+Q8S4YoUUg7pO1gRx2TCctFEgVOcAiXKXv2mpgwPyc+EemFl8\nzI8ud2WfgWD/c6PcFN/BHiI5wVIX1LikqVNdb5XgIQKBgQDthQ/SW1EE9pqnl4QP\nFt9xjKWwTb7HmX2v7DpdhM8wenEEppat4bR8yNXwSqWVAj7PwZyQ3hyNW3lXRL8Z\n4GCsqV4n/OJh8kBB0XJsBaYZ5+LNXNgKpqggnDw3aU1ujWwpg0hhF1Rc0zoSjmwz\nz4hONPQTSZkfgFv1hN09sIOn7wKBgQC7Ri6plMuLvZ+vXVYONZDJFS/HAszCV9Z2\nFxemX5xMSoC5Mi0Ksnm8pU9weJWMc+BjNfgmp2inXgp9eYBJeUjuvcmvCHo82pPV\naIAjGNWVnCrj/cv5Nwlu1UpEy7m8qidDtCDK7c8SKj54sjsVBGAo4sP9f3Fx5BY3\nce2MalZXMQKBgQDkoho5xhb2LR9vxYSkNcM+fUGctSm43sJCzqTcEpSSOLqD3Ivc\nsw/WskhltqUvC2tE9zzrojJfy7bAz3cYxIiqi5oL6fxMhjFeaeu3mbRq6XDDd+Sq\nVAQw59N7D00u5slAKJRKiXd2pwkWhawYL2QozAZKbqUL0rYyXwPMdxY0VwKBgQCA\npK5LKX5FKOY3lZsWua8Som4mfALiAWq9xhEl5Ym9UnRoQ1JzhbRgZQJT1VGNoM/j\n9t/W1arrRYtZNAxu7FSwQ0j25pDpmpBwyY80DMwzMIq6AM6MDEV7kCKrbXLSaeP8\n+xCHtaJH7SLq0CwLvOy9SUCus0vfm3mzbpxql2VmEQKBgEe9ry2eDJbtQ997oQTi\nGdRqqwc8hrvcRPgjPFntKwc038M/gH3+3LAK0X4f6XpiX9d9mzzdJB+d9WlOXUFe\nt4P/NpzkCcZoUJJ5wb5wskMm/Bzj1FbcHQoE4tWWp+uOh4DocdkuBgkjuzY+Aqoc\npWMW6yc/ESLITZQqld3T+ZpH\n-----END PRIVATE KEY-----\n",
+  "client_email": "cryptoneur-website@cryptoneur.iam.gserviceaccount.com",
+  "client_id": "115885549362558973687",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cryptoneur-website%40cryptoneur.iam.gserviceaccount.com"
+}
